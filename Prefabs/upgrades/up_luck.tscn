@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdi0skxq7g576"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Up_Luck.gd" id="1_0g8cs"]
+[ext_resource type="Texture2D" uid="uid://chfbavc8x8xvu" path="res://Sprites/Upgrades/Luck.png" id="2_xvux6"]
+
+[node name="Up_Luck" type="Node"]
+script = ExtResource("1_0g8cs")
+price = 10
+texture = ExtResource("2_xvux6")
+upgrade_name = "luck"

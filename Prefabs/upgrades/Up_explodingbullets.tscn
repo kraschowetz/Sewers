@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcqjv7b12ceaa"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Exploding_Bullets.gd" id="1_al6c7"]
+[ext_resource type="Texture2D" uid="uid://bbw1i2yfiwcou" path="res://Sprites/Upgrades/ExplodingBullets.png" id="2_owr2i"]
+
+[node name="up_explodingbullets" type="Node"]
+script = ExtResource("1_al6c7")
+price = 4
+texture = ExtResource("2_owr2i")
+upgrade_name = "exploding bullets"

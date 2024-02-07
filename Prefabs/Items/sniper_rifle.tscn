@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3v53a147fadd"]
+
+[ext_resource type="Script" path="res://Scripts/Gun/Gun.gd" id="1_8cmcl"]
+[ext_resource type="PackedScene" uid="uid://48nbm3dcmh6h" path="res://Prefabs/Projectiles/bullet.tscn" id="2_c3ork"]
+[ext_resource type="Texture2D" uid="uid://du3bp0xejvgcb" path="res://Sprites/Guns/Sniper RIfle.png" id="3_7h1pi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nskd4"]
+radius = 23.0
+
+[node name="SniperRifle" type="RigidBody2D"]
+position = Vector2(177, 145)
+gravity_scale = 0.0
+script = ExtResource("1_8cmcl")
+gun_name = "SniperRifle"
+price = 6
+max_ammo = 5
+damage = 3
+bullet_velocity = 90
+bullet_force = 5.0
+reload_time = 2.0
+fire_rate = 0.75
+knockback = 0.9
+position_offset = Vector2(48, 0)
+bullet = ExtResource("2_c3ork")
+bullet_origin_vector = Vector2(32, -5)
+target_point = Array[Vector2]([Vector2(37, -5)])
+spr = ExtResource("3_7h1pi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_7h1pi")
+
+[node name="OriginPoint" type="Marker2D" parent="."]
+position = Vector2(32, -5)
+
+[node name="BulletTargetPoint" type="Marker2D" parent="."]
+position = Vector2(37, -5)
+
+[node name="FireRateTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PrecisionRecoveryTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ItemPickupArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickupArea"]
+shape = SubResource("CircleShape2D_nskd4")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 24.0
+offset_right = 20.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="ItemPickupArea" to="." method="_on_item_pickup_area_body_entered"]
+[connection signal="body_exited" from="ItemPickupArea" to="." method="_on_item_pickup_area_body_exited"]

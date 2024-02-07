@@ -1,0 +1,9 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://c5gcoaxgcnc8u"]
+
+[ext_resource type="FontFile" uid="uid://du55vq5fuyk7l" path="res://Resources/Monocraft.ttf" id="1_5po5c"]
+
+[resource]
+base_font = ExtResource("1_5po5c")
+opentype_features = {
+1667329140: 0
+}

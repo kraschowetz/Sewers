@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://do5fxwhklhp0n"]
+
+[ext_resource type="Shader" path="res://Shaders/ItemShine.gdshader" id="1_7aceg"]
+
+[resource]
+shader = ExtResource("1_7aceg")
+shader_parameter/intensity = 3.0
+shader_parameter/wiggle_time = 1.5
+shader_parameter/shine_color = Vector4(1, 1, 1, 1)
+shader_parameter/shine_speed = 5.0
+shader_parameter/shine_size = 0.02

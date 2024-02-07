@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6t4yhsjkgcad"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/UpgradeItem.gd" id="1_0kg05"]
+[ext_resource type="PackedScene" uid="uid://dcqjv7b12ceaa" path="res://Prefabs/upgrades/Up_explodingbullets.tscn" id="2_8u6ob"]
+[ext_resource type="Material" uid="uid://do5fxwhklhp0n" path="res://Shaders/Materials/ItemShineMaterial.tres" id="3_spsvo"]
+[ext_resource type="Texture2D" uid="uid://bddtathwik0s0" path="res://Sprites/Guns/Boomstick.png" id="4_so0k5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6tm3w"]
+radius = 9.33928
+
+[node name="UpgradeItem" type="StaticBody2D"]
+position = Vector2(596, 322)
+script = ExtResource("1_0kg05")
+price = 1
+upgrade = ExtResource("2_8u6ob")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("3_spsvo")
+scale = Vector2(3, 3)
+texture = ExtResource("4_so0k5")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(3, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_6tm3w")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = 20.0
+offset_right = 20.0
+offset_bottom = 37.0
+text = "$02
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

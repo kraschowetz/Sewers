@@ -1,0 +1,26 @@
+TODO:
+	remove auto reload
+	-combate baseado em movimentação + acertar timing de regarga das armas
+	
+	TIPOS DE RECARGA:
+		curta (.75s - 1s): pistola, revolver, mosquete etc...
+		longa (1.75s - 2s): metralhadora, espingarda etc...
+		
+		RECARGA CURTA:
+			menos dano geral, mais flexivel e menos punitiva
+		RECARGA LONGA:
+			mais dano geral, mais punitiva caso erre o tempo certo de recarga
+	
+	TIPOS DE RITIMO DE INIMIGOS:
+		SEM:
+			ex. slime, gato com mosquete
+			sem ritimo
+			
+		RITIMO RÁPIDO:
+			ex. gato com matralhadora
+			ataca várias vezes por minuto, dando menos aberturas para recarga
+			
+		RITIMO LENTO:
+			ex. gato com espingarda
+			ataca poucas vezes por minuto, tem uma grande abertura para recarga/ataque
+			geralmente dão mais dano ou têm mais resistência

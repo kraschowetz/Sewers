@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://vx3lexyeo4o7"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Up_Armor.gd" id="1_iqina"]
+[ext_resource type="Texture2D" uid="uid://ckiuv5nl7a0e5" path="res://Sprites/Upgrades/Armor.png" id="2_d3mrx"]
+
+[node name="Up_Armor" type="Node"]
+script = ExtResource("1_iqina")
+price = 2
+texture = ExtResource("2_d3mrx")
+upgrade_name = "armor"

@@ -1,0 +1,132 @@
+[gd_scene load_steps=12 format=3 uid="uid://dyh43vdbgg776"]
+
+[ext_resource type="Script" path="res://Scripts/AI/Enemy.gd" id="1_g3nd2"]
+[ext_resource type="Texture2D" uid="uid://dm8i0w8nkwybt" path="res://Sprites/Cat/Cat.png" id="2_wfrhk"]
+[ext_resource type="Script" path="res://Scripts/State_Machine.gd" id="3_kx7cv"]
+[ext_resource type="Script" path="res://Scripts/AI/Enemy_Wandering_AI.gd" id="4_d6qs1"]
+[ext_resource type="Script" path="res://Scripts/AI/Cat_Chase_AI.gd" id="5_jrjai"]
+[ext_resource type="Script" path="res://Scripts/AI/Enemy_Gun.gd" id="6_jcckv"]
+[ext_resource type="Texture2D" uid="uid://cyj4wb0gp3yjc" path="res://Sprites/Guns/Musket.png" id="7_aal27"]
+[ext_resource type="PackedScene" uid="uid://48nbm3dcmh6h" path="res://Prefabs/bullet.tscn" id="8_ccnds"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3738"]
+size = Vector2(43, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2rh5"]
+size = Vector2(39, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq6sb"]
+size = Vector2(25, 26)
+
+[node name="Cat" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 19
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_g3nd2")
+hp = 1
+speed = 64
+damage = 1
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3.5, -1.5)
+shape = SubResource("RectangleShape2D_i3738")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_wfrhk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, -1)
+shape = SubResource("RectangleShape2D_w2rh5")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+
+[node name="Ref" type="Node2D" parent="."]
+position = Vector2(55, -2)
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Gun" type="Node2D" parent="Pivot"]
+position = Vector2(55, -2)
+script = ExtResource("6_jcckv")
+gun_name = "Musket"
+max_ammo = 1
+damage = 1
+bullet_velocity = 50
+reload_time = 1.0
+precision_recover_time = 1.0
+fire_rate = 1.0
+spray = 0.4
+bullet = ExtResource("8_ccnds")
+target_point = Array[Vector2]([Vector2(26, -6)])
+rotation_delay = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot/Gun"]
+scale = Vector2(2, 2)
+texture = ExtResource("7_aal27")
+
+[node name="Marker2D" type="Marker2D" parent="Pivot/Gun"]
+position = Vector2(24, -6)
+
+[node name="Target" type="Marker2D" parent="Pivot/Gun"]
+position = Vector2(26, -6)
+
+[node name="Timer" type="Timer" parent="Pivot/Gun"]
+
+[node name="Area2D" type="Area2D" parent="Pivot/Gun"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Gun/Area2D"]
+position = Vector2(-16.5, 2)
+shape = SubResource("RectangleShape2D_aq6sb")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_kx7cv")
+initial_state = NodePath("Wandering")
+
+[node name="Wandering" type="Node" parent="State Machine" node_paths=PackedStringArray("body", "ray", "gun")]
+script = ExtResource("4_d6qs1")
+body = NodePath("../..")
+wander_Size = 192
+ray = NodePath("../../RayCast2D")
+detection_range = 392
+gun = NodePath("../../Pivot/Gun")
+
+[node name="Line2D" type="Line2D" parent="State Machine/Wandering"]
+
+[node name="Chasing" type="Node" parent="State Machine" node_paths=PackedStringArray("agent", "body", "gun", "ray")]
+script = ExtResource("5_jrjai")
+agent = NodePath("../../NavigationAgent2D")
+body = NodePath("../..")
+gun = NodePath("../../Pivot/Gun")
+ray = NodePath("../../RayCast2D")
+reposition_size = 384
+max_distance = 300
+
+[node name="Nav Timer" type="Timer" parent="State Machine/Chasing"]
+wait_time = 0.1
+
+[node name="Line2D" type="Line2D" parent="State Machine/Chasing"]
+
+[node name="Target Timer" type="Timer" parent="State Machine/Chasing"]
+wait_time = 5.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 48.0
+target_desired_distance = 1020.0
+avoidance_enabled = true
+debug_enabled = true
+
+[connection signal="area_entered" from="Area2D" to="State Machine/Wandering" method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="State Machine/Wandering" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="State Machine/Chasing" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="State Machine/Chasing" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="State Machine/Chasing/Nav Timer" to="State Machine/Chasing" method="_on_nav_timer_timeout"]
+[connection signal="timeout" from="State Machine/Chasing/Target Timer" to="State Machine/Chasing" method="_on_target_timer_timeout"]
+[connection signal="timeout" from="Timer" to="State Machine/Chasing" method="_on_timer_timeout"]

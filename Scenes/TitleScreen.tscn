@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://368ede6aao7w"]
+
+[ext_resource type="Material" uid="uid://do5fxwhklhp0n" path="res://Shaders/Materials/ItemShineMaterial.tres" id="1_nr5e2"]
+[ext_resource type="Script" path="res://Scripts/TitleScreen/Title.gd" id="2_0ujnd"]
+[ext_resource type="Texture2D" uid="uid://bx04e80l1f68" path="res://Sprites/UI/Health Icons/H1.png" id="2_m37cp"]
+[ext_resource type="Script" path="res://Scripts/TitleScreen/PlayButton.gd" id="3_umvp3"]
+[ext_resource type="Script" path="res://Scripts/TitleScreen/QuitButton.gd" id="5_dsivk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pul3w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cbqxr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j7r8f"]
+
+[node name="TitleScreen" type="Node2D"]
+
+[node name="MainLayer" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="MainLayer"]
+material = ExtResource("1_nr5e2")
+offset_left = -2.0
+offset_top = 144.0
+offset_right = 1153.0
+offset_bottom = 195.0
+theme_override_font_sizes/font_size = 50
+text = "RAT GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_0ujnd")
+
+[node name="rat" type="Sprite2D" parent="MainLayer"]
+position = Vector2(575, 290)
+scale = Vector2(3, 3)
+texture = ExtResource("2_m37cp")
+
+[node name="PlayButton" type="Button" parent="MainLayer"]
+material = ExtResource("1_nr5e2")
+offset_left = -2.0
+offset_top = 369.0
+offset_right = 1151.0
+offset_bottom = 415.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pul3w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cbqxr")
+text = "PLAY"
+flat = true
+script = ExtResource("3_umvp3")
+
+[node name="QuitButton" type="Button" parent="MainLayer"]
+material = ExtResource("1_nr5e2")
+offset_left = -2.0
+offset_top = 441.0
+offset_right = 1151.0
+offset_bottom = 487.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j7r8f")
+text = "QUIT"
+flat = true
+script = ExtResource("5_dsivk")
+
+[node name="ConfigLayer" type="CanvasLayer" parent="."]
+
+[connection signal="mouse_entered" from="MainLayer/PlayButton" to="MainLayer/PlayButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainLayer/PlayButton" to="MainLayer/PlayButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainLayer/PlayButton" to="MainLayer/PlayButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="MainLayer/QuitButton" to="MainLayer/QuitButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainLayer/QuitButton" to="MainLayer/QuitButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainLayer/QuitButton" to="MainLayer/QuitButton" method="_on_pressed"]

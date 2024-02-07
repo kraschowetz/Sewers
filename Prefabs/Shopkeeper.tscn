@@ -1,0 +1,32 @@
+[gd_scene load_steps=15 format=3 uid="uid://d1opfciltuk7g"]
+
+[ext_resource type="Script" path="res://Scripts/Npcs/Shopkeeper.gd" id="1_cnctt"]
+[ext_resource type="PackedScene" uid="uid://bx43f2kmtvbbh" path="res://Prefabs/Items/handgun.tscn" id="2_3wutw"]
+[ext_resource type="PackedScene" uid="uid://r4pk0avtlbr7" path="res://Prefabs/Items/boomstick.tscn" id="2_opdeo"]
+[ext_resource type="PackedScene" uid="uid://fqkx04b63cnt" path="res://Prefabs/Items/machine_gun.tscn" id="4_s6w5n"]
+[ext_resource type="PackedScene" uid="uid://wrgs2h3idwow" path="res://Prefabs/Items/revolver.tscn" id="5_c1v1u"]
+[ext_resource type="PackedScene" uid="uid://pybljjt42b46" path="res://Prefabs/Items/shotgun.tscn" id="6_nnqnx"]
+[ext_resource type="PackedScene" uid="uid://uc8l7bar8ou1" path="res://Prefabs/Items/smg.tscn" id="7_wmnb6"]
+[ext_resource type="PackedScene" uid="uid://dr553ybphxmdk" path="res://Prefabs/Items/Armor.tscn" id="8_8fpke"]
+[ext_resource type="PackedScene" uid="uid://b3v53a147fadd" path="res://Prefabs/Items/sniper_rifle.tscn" id="8_32u2w"]
+[ext_resource type="PackedScene" uid="uid://dcqjv7b12ceaa" path="res://Prefabs/upgrades/Up_explodingbullets.tscn" id="8_ptrkg"]
+[ext_resource type="PackedScene" uid="uid://c6t4yhsjkgcad" path="res://Prefabs/Items/UpgradeItem.tscn" id="9_1hw8y"]
+[ext_resource type="PackedScene" uid="uid://cdi0skxq7g576" path="res://Prefabs/upgrades/up_luck.tscn" id="10_brovw"]
+[ext_resource type="Texture2D" uid="uid://cofhad54al2f2" path="res://Sprites/Shopkeeper/Shopkeeper.png" id="10_t175q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw6q4"]
+size = Vector2(36, 30)
+
+[node name="Shopkeeper" type="StaticBody2D"]
+script = ExtResource("1_cnctt")
+gun_items = Array[PackedScene]([ExtResource("2_3wutw"), ExtResource("2_opdeo"), ExtResource("4_s6w5n"), ExtResource("5_c1v1u"), ExtResource("6_nnqnx"), ExtResource("7_wmnb6"), ExtResource("8_32u2w")])
+upgrades = Array[PackedScene]([ExtResource("8_8fpke"), ExtResource("8_ptrkg"), ExtResource("10_brovw")])
+upgrade_item = ExtResource("9_1hw8y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("10_t175q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_rw6q4")

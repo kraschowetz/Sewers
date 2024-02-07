@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://e643x8olynw8"]
+
+[ext_resource type="Script" path="res://Scripts/World/Cheese.gd" id="1_q3mhi"]
+[ext_resource type="Texture2D" uid="uid://mmqk7kkmyn63" path="res://Sprites/Cheese_item.png" id="2_2j2j5"]
+[ext_resource type="Shader" path="res://Shaders/ItemShine.gdshader" id="2_r1qb7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yo8ib"]
+shader = ExtResource("2_r1qb7")
+shader_parameter/intensity = 3.0
+shader_parameter/wiggle_time = 1.5
+shader_parameter/shine_color = Vector4(1, 1, 1, 0.9)
+shader_parameter/shine_speed = 5.0
+shader_parameter/shine_size = 0.02
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t8js7"]
+radius = 24.0416
+
+[node name="Cheese" type="StaticBody2D"]
+script = ExtResource("1_q3mhi")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_yo8ib")
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_2j2j5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_t8js7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

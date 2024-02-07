@@ -1,0 +1,200 @@
+[gd_scene load_steps=23 format=3 uid="uid://dyh43vdbgg776"]
+
+[ext_resource type="Script" path="res://Scripts/AI/Enemy.gd" id="1_g3nd2"]
+[ext_resource type="Texture2D" uid="uid://cfam84qexgy8u" path="res://Sprites/Enemies/Cat/Cat1.png" id="2_lv34p"]
+[ext_resource type="Texture2D" uid="uid://dw0p7f2n7tms5" path="res://Sprites/Enemies/Cat/Idle/Cat Idle1.png" id="2_ygorh"]
+[ext_resource type="Texture2D" uid="uid://d3a660oa3sx2w" path="res://Sprites/Enemies/Cat/Idle/Cat Idle2.png" id="3_16mac"]
+[ext_resource type="Script" path="res://Scripts/State_Machine.gd" id="3_kx7cv"]
+[ext_resource type="Texture2D" uid="uid://dsvywg5lcqesx" path="res://Sprites/Enemies/Cat/Cat2.png" id="3_x5u3k"]
+[ext_resource type="Script" path="res://Scripts/AI/Enemy_Wandering_AI.gd" id="4_d6qs1"]
+[ext_resource type="Texture2D" uid="uid://c2pgej48qy00l" path="res://Sprites/Enemies/Cat/Cat3.png" id="4_f6l0c"]
+[ext_resource type="Script" path="res://Scripts/AI/Cat_Chase_AI.gd" id="5_jrjai"]
+[ext_resource type="Texture2D" uid="uid://cai1gv16a2uyx" path="res://Sprites/Enemies/Cat/Cat4.png" id="5_uwkjp"]
+[ext_resource type="Texture2D" uid="uid://drm8vytqarr15" path="res://Sprites/Enemies/Cat/Cat5.png" id="6_2dbb6"]
+[ext_resource type="Script" path="res://Scripts/AI/Enemy_Gun.gd" id="6_jcckv"]
+[ext_resource type="Texture2D" uid="uid://cyj4wb0gp3yjc" path="res://Sprites/Guns/Musket.png" id="7_aal27"]
+[ext_resource type="Texture2D" uid="uid://byrljk4do70ig" path="res://Sprites/Enemies/Cat/Cat6.png" id="7_g7pf8"]
+[ext_resource type="PackedScene" uid="uid://48nbm3dcmh6h" path="res://Prefabs/Projectiles/bullet.tscn" id="8_ccnds"]
+[ext_resource type="Texture2D" uid="uid://cnt8ycr1v3i16" path="res://Sprites/Enemies/Cat/Cat7.png" id="8_lfag8"]
+[ext_resource type="Texture2D" uid="uid://6yojjpbp1axd" path="res://Sprites/Enemies/Cat/Cat8.png" id="9_ukxut"]
+[ext_resource type="Texture2D" uid="uid://bq7upejbvr7u" path="res://Sprites/Enemies/Cat/Defeated/CatDefeated.png" id="10_bm8cy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3738"]
+size = Vector2(43, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xxnn3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lv34p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x5u3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f6l0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uwkjp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2dbb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7pf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lfag8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ukxut")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_bm8cy")
+}],
+"loop": true,
+"name": &"defeated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ygorh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_16mac")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2rh5"]
+size = Vector2(39, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq6sb"]
+size = Vector2(25, 26)
+
+[node name="Cat" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 3
+collision_mask = 19
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_g3nd2")
+hp = 2
+speed = 64
+damage = 1
+sprite = NodePath("AnimatedSprite2D")
+can_flip = true
+has_multiple_animations = true
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3.5, -1.5)
+shape = SubResource("RectangleShape2D_i3738")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_xxnn3")
+animation = &"defeated"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, -1)
+shape = SubResource("RectangleShape2D_w2rh5")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+
+[node name="Ref" type="Node2D" parent="."]
+position = Vector2(55, -2)
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Gun" type="Node2D" parent="Pivot"]
+position = Vector2(55, -2)
+script = ExtResource("6_jcckv")
+gun_name = "Musket"
+max_ammo = 1
+damage = 1
+bullet_velocity = 50
+reload_time = 5.0
+precision_recover_time = 1.0
+fire_rate = 1.0
+spray = 0.4
+bullet = ExtResource("8_ccnds")
+target_point = Array[Vector2]([Vector2(26, -6)])
+rotation_delay = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot/Gun"]
+scale = Vector2(2, 2)
+texture = ExtResource("7_aal27")
+
+[node name="Marker2D" type="Marker2D" parent="Pivot/Gun"]
+position = Vector2(24, -6)
+
+[node name="Target" type="Marker2D" parent="Pivot/Gun"]
+position = Vector2(26, -6)
+
+[node name="Timer" type="Timer" parent="Pivot/Gun"]
+
+[node name="Fire Rate Timer" type="Timer" parent="Pivot/Gun"]
+
+[node name="Area2D" type="Area2D" parent="Pivot/Gun"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Gun/Area2D"]
+position = Vector2(-16.5, 2)
+shape = SubResource("RectangleShape2D_aq6sb")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_kx7cv")
+initial_state = NodePath("Wandering")
+
+[node name="Wandering" type="Node" parent="State Machine" node_paths=PackedStringArray("body", "ray", "gun")]
+script = ExtResource("4_d6qs1")
+body = NodePath("../..")
+wander_Size = 192
+ray = NodePath("../../RayCast2D")
+detection_range = 392
+gun = NodePath("../../Pivot/Gun")
+
+[node name="Line2D" type="Line2D" parent="State Machine/Wandering"]
+
+[node name="Chasing" type="Node" parent="State Machine" node_paths=PackedStringArray("agent", "body", "gun", "ray")]
+script = ExtResource("5_jrjai")
+agent = NodePath("../../NavigationAgent2D")
+body = NodePath("../..")
+gun = NodePath("../../Pivot/Gun")
+ray = NodePath("../../RayCast2D")
+reposition_size = 384
+max_distance = 182
+
+[node name="Shoot Timer" type="Timer" parent="State Machine/Chasing"]
+
+[node name="Nav Timer" type="Timer" parent="State Machine/Chasing"]
+wait_time = 0.1
+
+[node name="Line2D" type="Line2D" parent="State Machine/Chasing"]
+
+[node name="Target Timer" type="Timer" parent="State Machine/Chasing"]
+wait_time = 5.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 48.0
+
+[connection signal="area_entered" from="Area2D" to="State Machine/Wandering" method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="State Machine/Wandering" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="State Machine/Chasing" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="State Machine/Chasing" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Pivot/Gun/Timer" to="Pivot/Gun" method="_on_timer_timeout"]
+[connection signal="timeout" from="Pivot/Gun/Fire Rate Timer" to="Pivot/Gun" method="_on_fire_rate_timer_timeout"]
+[connection signal="timeout" from="State Machine/Chasing/Shoot Timer" to="State Machine/Chasing" method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="State Machine/Chasing/Nav Timer" to="State Machine/Chasing" method="_on_nav_timer_timeout"]
+[connection signal="timeout" from="State Machine/Chasing/Target Timer" to="State Machine/Chasing" method="_on_target_timer_timeout"]

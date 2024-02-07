@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx43f2kmtvbbh"]
+
+[ext_resource type="Script" path="res://Scripts/Gun/Gun.gd" id="1_u820d"]
+[ext_resource type="PackedScene" uid="uid://48nbm3dcmh6h" path="res://Prefabs/Projectiles/bullet.tscn" id="2_6wple"]
+[ext_resource type="Texture2D" uid="uid://behn8hi5lw4tc" path="res://Sprites/Guns/Gun.png" id="3_vqhrt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nskd4"]
+radius = 23.0
+
+[node name="Handgun" type="RigidBody2D"]
+position = Vector2(701, 148)
+gravity_scale = 0.0
+script = ExtResource("1_u820d")
+gun_name = "Handgun"
+price = 1
+max_ammo = 8
+precision = 2
+damage = 1
+bullet_velocity = 80
+reload_time = 0.75
+precision_recover_time = 1.0
+fire_rate = 0.5
+spray = 0.6
+knockback = 0.2
+position_offset = Vector2(48, 0)
+bullet = ExtResource("2_6wple")
+bullet_origin_vector = Vector2(17, -5)
+target_point = Array[Vector2]([Vector2(22, -5)])
+spr = ExtResource("3_vqhrt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_vqhrt")
+
+[node name="OriginPoint" type="Marker2D" parent="."]
+position = Vector2(17, -5)
+
+[node name="BulletTargetPoint" type="Marker2D" parent="."]
+position = Vector2(22, -5)
+
+[node name="FireRateTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PrecisionRecoveryTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ItemPickupArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickupArea"]
+shape = SubResource("CircleShape2D_nskd4")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 24.0
+offset_right = 20.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="ItemPickupArea" to="." method="_on_item_pickup_area_body_entered"]
+[connection signal="body_exited" from="ItemPickupArea" to="." method="_on_item_pickup_area_body_exited"]

@@ -1,0 +1,12 @@
+res://Scenes/Debug.tscn
+res://Scripts/AI/Enemy_Wandering_AI.gd
+res://Shaders/ItemShine.gdshader
+res://Shaders/Materials/ItemShineMaterial.tres
+res://Shaders/ChromaticAberration.gdshader
+res://Shaders/Water.gdshader
+res://Shaders/DownwardsWobble.gdshader
+res://Prefabs/Items/shotgun.tscn
+res://Scripts/player/Gun_Handler.gd
+res://Scripts/Gun/Gun.gd
+res://Scripts/player/Player.gd
+res://Scripts/AI/Enemy.gd
