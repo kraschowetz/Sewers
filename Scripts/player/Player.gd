@@ -25,6 +25,7 @@ var speed_mod: float = 1
 var invincible: bool = false
 var external_velocity: Vector2
 var armed: bool = false
+var is_on_spikes: bool = false
 
 func apply_force(duration: float, force: Vector2) -> void:
 	external_velocity = force
@@ -52,10 +53,7 @@ func apply_damage(dmg: int) -> void:
 	
 	emit_signal("hp_changed")
 	
-	if hp < 1: #DELETE OR REPLACE LATER
-		await get_tree().create_timer(.1).timeout
-		#get_tree().change_scene_to_file("res://Scenes/Debug.tscn")
-	else:
+	if hp > 0:
 		count_invincibility_time()
 
 func count_invincibility_time() -> void:
@@ -71,8 +69,10 @@ func handle_animations() -> void:
 	var axis = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 	
 	if armed && gun != null:
-		if gun.ammo < 1 && !gun.is_reloading && armed:
+		if gun.ammo < 1 && !gun.is_reloading:
 			reload_indicator.visible = true
+		else:
+			reload_indicator.visible = false
 	else:
 		reload_indicator.visible = false
 	

@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://lhl8rm2g21wq"]
+
+[ext_resource type="Script" path="res://Scripts/World/Spikes.gd" id="1_waf4h"]
+[ext_resource type="Texture2D" uid="uid://cynsx2ycx0hdb" path="res://Sprites/TIles/Spikes/Spikes1.png" id="2_sfdv2"]
+[ext_resource type="Texture2D" uid="uid://hxddq8gir1ta" path="res://Sprites/TIles/Spikes/Spikes2.png" id="3_4bal8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af1yj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5jn5i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sfdv2")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4bal8")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 5.0
+}]
+
+[node name="Spikes" type="StaticBody2D"]
+z_index = -1
+script = ExtResource("1_waf4h")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(2.4, 2.4)
+shape = SubResource("RectangleShape2D_af1yj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_5jn5i")
+animation = &"Up"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="DmgTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DmgTimer" to="." method="_on_dmg_timer_timeout"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0xowi4hmvljc"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Up_ReloadOnEnemykill.gd" id="1_1vqhv"]
+[ext_resource type="Texture2D" uid="uid://dea00begkqt7" path="res://Sprites/Upgrades/ReloadingThrow.png" id="2_ynt03"]
+
+[node name="up_reloadingThrow" type="Node"]
+script = ExtResource("1_1vqhv")
+price = 3
+texture = ExtResource("2_ynt03")
+upgrade_name = "exploding bullets"

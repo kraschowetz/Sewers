@@ -19,7 +19,7 @@ var bounds: Vector2 = Vector2(1500, 650)
 var speed
 
 func enter() -> void:
-	shoot_delay = gun.fire_rate + randf()
+	shoot_delay = gun.fire_rate + (randf() / 4)
 	$"Shoot Timer".wait_time = shoot_delay
 	spawn_point = body.position
 	$"Nav Timer".start()

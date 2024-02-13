@@ -20,6 +20,7 @@ var invincible: bool = false
 var max_hp: int
 var player: CharacterBody2D
 var external_velocity: Vector2
+var is_on_spikes: bool = false
 
 signal defeated(pos: Vector2)
 

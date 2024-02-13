@@ -2,7 +2,7 @@ extends Label
 
 func _ready():
 	#get text from file
-	var file = FileAccess.open("res://Scripts/TitleScreen/Titles.txt", FileAccess.READ)
+	var file = FileAccess.open("res://Titles.txt", FileAccess.READ)
 	var txt = file.get_as_text()
 	
 	#split text and store in an array

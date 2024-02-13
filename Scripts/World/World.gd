@@ -4,8 +4,12 @@ class_name World
 @onready var map: TileMap = $TileMap
 @onready var sub_map: TileMap = $TileMapLower
 @onready var overlay_map: TileMap = $OverlayMap
+@onready var water: Sprite2D = $Water
 @onready var cheese: PackedScene = preload("res://Prefabs/Items/cheese.tscn")
 @onready var shopkeeper: PackedScene = preload("res://Prefabs/Shopkeeper.tscn")
+@onready var spikes: PackedScene = preload("res://Prefabs/spikes.tscn")
+@export var tile_sets: Array[TileSet]
+@export var water_textures: Array[Texture2D]
 
 @export var map_ammount: int
 @export var random_cheese_chance: int = 10
@@ -13,7 +17,6 @@ class_name World
 @export var enemy_list: Array[PackedScene]
 @export var boss_list: Array[PackedScene]
 @export var enemy_spawner_dictionary: Node
-@export var boss_spawner_dictionary: Node
 @export var debug: bool
 @export var layer: int = 0
 
@@ -29,6 +32,7 @@ var shopkeeper_loaded: bool = false
 var generating_world: bool
 var unload_after_layer_exit: Array[Node]
 var spawn_cheese_on_enemy_kill: bool = false
+var change_tileset_on_next_round: bool = false
 
 func _ready():
 	if(!debug):
@@ -37,6 +41,12 @@ func _ready():
 	enemy_dict = enemy_spawner_dictionary.dict
 	boss_dict = enemy_spawner_dictionary.boss_dict
 	#generate_world()
+
+func update_tileset() -> void:
+	var i: int = randi_range(0, tile_sets.size() - 1)
+	map.tile_set = tile_sets[i]
+	sub_map.tile_set = tile_sets[i]
+	water.texture = water_textures[i]
 
 func on_enemy_defeated(pos: Vector2) -> void:
 	enemy_count -= 1
@@ -168,6 +178,13 @@ func generate_world() -> void:
 					map.set_cell(0, Vector2(x + 1, y), 0, Vector2(generate_floor_variant(10), 0))
 					shopkeeper_loaded = true
 				
+				Color("#8f4d57"): #Spike
+					var s = spikes.instantiate()
+					s.position = Vector2((x + 1.5) * 48, (y + .5) * 48)
+					call_deferred("add_child", s)
+					map.set_cell(0, Vector2(x + 1, y), 0, Vector2(0, 1))
+					unload_after_layer_exit.append(s)
+				
 				Color("#4fa4b8"): #central water
 					map.erase_cell(0, Vector2(x + 1, y))
 					sub_map.set_cell(0, Vector2(x + 1, y), 0, Vector2(4, 1))
@@ -225,6 +242,12 @@ func transition() -> void:
 			if unload_after_layer_exit[i] != null:
 				unload_after_layer_exit[i].queue_free()
 	
+	if layer % 10 == 0:
+		change_tileset_on_next_round = true
+	if change_tileset_on_next_round && layer % 20 != 0:
+		update_tileset()
+		change_tileset_on_next_round = false
+	
 	generate_world()
 	
 	$Player.ammo_changed.emit()
@@ -235,7 +258,7 @@ func transition() -> void:
 			overlay_map.set_cell(-1, Vector2(x + 1, y), -1, Vector2(1, 2))
 		await get_tree().create_timer(.075).timeout
 	set_visibility(true)
-	generating_world = false	
+	generating_world = false
 
 func _on_exit_body_entered(body):
 	if body.name != "Player": return

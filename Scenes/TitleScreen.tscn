@@ -1,16 +1,121 @@
-[gd_scene load_steps=9 format=3 uid="uid://368ede6aao7w"]
+[gd_scene load_steps=34 format=3 uid="uid://368ede6aao7w"]
 
 [ext_resource type="Material" uid="uid://do5fxwhklhp0n" path="res://Shaders/Materials/ItemShineMaterial.tres" id="1_nr5e2"]
 [ext_resource type="Script" path="res://Scripts/TitleScreen/Title.gd" id="2_0ujnd"]
 [ext_resource type="Texture2D" uid="uid://bx04e80l1f68" path="res://Sprites/UI/Health Icons/H1.png" id="2_m37cp"]
+[ext_resource type="Shader" path="res://Shaders/SimpleWobble.gdshader" id="3_71chk"]
+[ext_resource type="Texture2D" uid="uid://bi2cj2i03c87p" path="res://Sprites/UI/MenuIcons/MenuPlayerBottomless.png" id="3_q1ktd"]
 [ext_resource type="Script" path="res://Scripts/TitleScreen/PlayButton.gd" id="3_umvp3"]
+[ext_resource type="Script" path="res://Scripts/TitleScreen/MenuIcon.gd" id="4_sjl07"]
 [ext_resource type="Script" path="res://Scripts/TitleScreen/QuitButton.gd" id="5_dsivk"]
+[ext_resource type="Texture2D" uid="uid://rx28j4no1bmw" path="res://Sprites/UI/Health Icons/H0.png" id="5_gmmnb"]
+[ext_resource type="Script" path="res://Scripts/TitleScreen/ConfigButton.gd" id="5_j62yd"]
+[ext_resource type="Script" path="res://Scripts/TitleScreen/ConfigMaxFPS.gd" id="6_twvuv"]
+[ext_resource type="Shader" path="res://Shaders/ItemShine.gdshader" id="7_52e7v"]
+[ext_resource type="Texture2D" uid="uid://cs40mvj0a333l" path="res://Sprites/UI/Health Icons/H2.png" id="7_liimk"]
+[ext_resource type="Texture2D" uid="uid://ipi0bmou38b4" path="res://Sprites/UI/MenuIcons/MenuPlayerSaturation.png" id="8_m36jd"]
+[ext_resource type="Script" path="res://Scripts/TitleScreen/Vsync.gd" id="9_2n2f4"]
+[ext_resource type="Script" path="res://Scripts/TitleScreen/ApplyButton.gd" id="10_yw08i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4sn6i"]
+shader = ExtResource("3_71chk")
+shader_parameter/multiplier = 2.5
+shader_parameter/time_mod = 1.2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pul3w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cbqxr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j7r8f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_idsi0"]
+shader = ExtResource("7_52e7v")
+shader_parameter/intensity = 3.0
+shader_parameter/wiggle_time = 0.5
+shader_parameter/shine_color = Vector4(1, 1, 1, 1)
+shader_parameter/shine_speed = 5.0
+shader_parameter/shine_size = 0.02
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fl1fq"]
+
+[sub_resource type="Theme" id="Theme_q0xs0"]
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_fl1fq")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qmwtc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ta2u6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dhxxp"]
+
+[sub_resource type="Shader" id="Shader_qxj1p"]
+code = "shader_type canvas_item;
+
+uniform float intensity = 3.0;
+uniform float wiggle_time = 1.5;
+
+uniform vec4 shine_color;
+uniform float shine_speed;
+uniform float shine_size;
+
+void vertex() {
+	VERTEX.y += sin(TIME * wiggle_time + VERTEX.x * 0.05) * intensity;
+}
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	float shine = step(1.0 - shine_size * 0.5, 0.5 + 0.5 * sin(UV.x - UV.y + TIME * shine_speed));
+	COLOR.rgb = mix(COLOR.rgb, shine_color.rgb, shine * shine_color.a);
+}
+
+/*
+---DOCUMENTACIÓN---
+
+	-variaveis do wobble
+	-variaveis do brilho
+	
+	void vertex:
+		
+		posição y do vertice += função de seno(
+			tempo * mod_de_tempo + posição_X *
+			 0.05
+		) * intensidade_do_wobble;
+		
+	
+	void fragment:
+		brilho = interpolar(
+			LIMITE: 1 - tamanho_do_brilho * 0.5,
+			VALOR: 0.5 + função de seno(
+				posição_X - posição_Y + tempo * velocidade_dp_brilho
+			) * 0.5;
+		)
+		
+		cor = interpolação_linear(
+			VALOR_A: cor,
+			VALOR_B: cor_do_brilho,
+			TEMPO: transparencia_do_brilho
+		);
+		
+	
+
+*/"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_avo16"]
+shader = SubResource("Shader_qxj1p")
+shader_parameter/intensity = 3.0
+shader_parameter/wiggle_time = 0.5
+shader_parameter/shine_color = Vector4(1, 1, 1, 1)
+shader_parameter/shine_speed = 5.0
+shader_parameter/shine_size = 0.02
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fwfko"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qois"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m8vo0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7safg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v6iy0"]
 
 [node name="TitleScreen" type="Node2D"]
 
@@ -23,15 +128,18 @@ offset_top = 144.0
 offset_right = 1153.0
 offset_bottom = 195.0
 theme_override_font_sizes/font_size = 50
-text = "RAT GAME"
+text = "ERROR"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_0ujnd")
 
 [node name="rat" type="Sprite2D" parent="MainLayer"]
+material = SubResource("ShaderMaterial_4sn6i")
 position = Vector2(575, 290)
 scale = Vector2(3, 3)
-texture = ExtResource("2_m37cp")
+texture = ExtResource("3_q1ktd")
+script = ExtResource("4_sjl07")
+textures = Array[Texture2D]([ExtResource("3_q1ktd"), ExtResource("5_gmmnb"), ExtResource("2_m37cp"), ExtResource("7_liimk"), ExtResource("8_m36jd")])
 
 [node name="PlayButton" type="Button" parent="MainLayer"]
 material = ExtResource("1_nr5e2")
@@ -46,12 +154,25 @@ text = "PLAY"
 flat = true
 script = ExtResource("3_umvp3")
 
-[node name="QuitButton" type="Button" parent="MainLayer"]
+[node name="ConfigButton" type="Button" parent="MainLayer"]
 material = ExtResource("1_nr5e2")
 offset_left = -2.0
 offset_top = 441.0
 offset_right = 1151.0
 offset_bottom = 487.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pul3w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cbqxr")
+text = "CONFIG"
+flat = true
+script = ExtResource("5_j62yd")
+
+[node name="QuitButton" type="Button" parent="MainLayer"]
+material = ExtResource("1_nr5e2")
+offset_left = -2.0
+offset_top = 513.0
+offset_right = 1151.0
+offset_bottom = 559.0
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_j7r8f")
 text = "QUIT"
@@ -59,10 +180,103 @@ flat = true
 script = ExtResource("5_dsivk")
 
 [node name="ConfigLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Title" type="Label" parent="ConfigLayer"]
+material = ExtResource("1_nr5e2")
+offset_left = -2.0
+offset_top = 32.0
+offset_right = 1153.0
+offset_bottom = 83.0
+theme_override_font_sizes/font_size = 50
+text = "CONFIGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Line1" type="Node2D" parent="ConfigLayer"]
+position = Vector2(0, 81)
+metadata/_edit_group_ = true
+
+[node name="Text" type="Label" parent="ConfigLayer/Line1"]
+material = ExtResource("1_nr5e2")
+offset_top = 32.0
+offset_right = 866.0
+offset_bottom = 83.0
+theme_override_font_sizes/font_size = 38
+text = "Max FPS:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="ConfigLayer/Line1"]
+material = SubResource("ShaderMaterial_idsi0")
+offset_left = 866.0
+offset_top = 32.0
+offset_right = 1136.63
+offset_bottom = 83.0
+theme = SubResource("Theme_q0xs0")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qmwtc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ta2u6")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_dhxxp")
+text = "60"
+script = ExtResource("6_twvuv")
+
+[node name="Line2" type="Node2D" parent="ConfigLayer"]
+position = Vector2(0, 177)
+metadata/_edit_group_ = true
+
+[node name="Text" type="Label" parent="ConfigLayer/Line2"]
+material = ExtResource("1_nr5e2")
+offset_top = 32.0
+offset_right = 866.0
+offset_bottom = 83.0
+theme_override_font_sizes/font_size = 38
+text = "Vsync:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ConfigLayer/Line2"]
+material = SubResource("ShaderMaterial_avo16")
+offset_left = 866.0
+offset_top = 32.0
+offset_right = 1136.63
+offset_bottom = 83.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fwfko")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8qois")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_m8vo0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7safg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v6iy0")
+text = "ON"
+alignment = 0
+script = ExtResource("9_2n2f4")
+
+[node name="ApplyButton" type="Button" parent="ConfigLayer"]
+material = ExtResource("1_nr5e2")
+offset_left = -2.0
+offset_top = 584.0
+offset_right = 1151.0
+offset_bottom = 630.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j7r8f")
+text = "APPLY
+"
+flat = true
+script = ExtResource("10_yw08i")
 
 [connection signal="mouse_entered" from="MainLayer/PlayButton" to="MainLayer/PlayButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainLayer/PlayButton" to="MainLayer/PlayButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="MainLayer/PlayButton" to="MainLayer/PlayButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="MainLayer/ConfigButton" to="MainLayer/ConfigButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainLayer/ConfigButton" to="MainLayer/ConfigButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainLayer/ConfigButton" to="MainLayer/ConfigButton" method="_on_pressed"]
 [connection signal="mouse_entered" from="MainLayer/QuitButton" to="MainLayer/QuitButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainLayer/QuitButton" to="MainLayer/QuitButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="MainLayer/QuitButton" to="MainLayer/QuitButton" method="_on_pressed"]
+[connection signal="gui_input" from="ConfigLayer/Line1/TextEdit" to="ConfigLayer/Line1/TextEdit" method="_on_gui_input"]
+[connection signal="text_changed" from="ConfigLayer/Line1/TextEdit" to="ConfigLayer/Line1/TextEdit" method="_on_text_changed"]
+[connection signal="pressed" from="ConfigLayer/Line2/Button" to="ConfigLayer/Line2/Button" method="_on_pressed"]
+[connection signal="vsync_changed" from="ConfigLayer/Line2/Button" to="ConfigLayer/Line1/TextEdit" method="_on_button_vsync_changed"]
+[connection signal="mouse_entered" from="ConfigLayer/ApplyButton" to="ConfigLayer/ApplyButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ConfigLayer/ApplyButton" to="ConfigLayer/ApplyButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="ConfigLayer/ApplyButton" to="ConfigLayer/ApplyButton" method="_on_pressed"]

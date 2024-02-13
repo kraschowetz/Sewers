@@ -15,6 +15,7 @@ func _on_area_2d_body_entered(body):
 	if player.hp > 2: return
 	
 	player.hp = 3
+	player.cheese -= price
 	player.hp_changed.emit()
 	
 	for i  in world.unload_after_layer_exit.size():

@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player: Player = get_parent()
 @onready var unarmored_damage_timer: Timer = $UnarmedDamageTimer
+@onready var slash_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var gun: Node2D
 
@@ -34,6 +35,7 @@ func _process(_delta) -> void:
 			shoot.emit()
 		elif can_deal_unarmed_damage:
 			unarmed_damage.emit(1, player.global_position, 3)
+			slash_sprite.play("default")
 			can_deal_unarmed_damage = false
 			unarmored_damage_timer.start()
 	
@@ -41,7 +43,7 @@ func _process(_delta) -> void:
 	
 	if Input.is_action_pressed("rmb"):
 		reload.emit()
-	if Input.is_action_pressed("scroll") && player.armed:
+	if Input.is_action_just_released("scroll") && player.armed:
 		throw.emit()
 		if is_connected("shoot", gun.on_shoot):
 			shoot.disconnect(gun.on_shoot)

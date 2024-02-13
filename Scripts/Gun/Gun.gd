@@ -45,6 +45,10 @@ var ammo: int
 var can_shoot: bool = true
 var shoot_num: int = 0
 var can_deal_throw_damage: bool = false
+var can_be_picked_up: bool = true
+
+#variavavies de upgrades
+var reload_on_enemy_kill: bool = false
 
 var connected: bool = false
 
@@ -198,6 +202,9 @@ func on_throw() -> void:
 	apply_central_force(Vector2(cos(angle), sin(angle)) * 40 * 1000)
 	price = 0
 	price_label.visible = false
+	can_be_picked_up = false
+	await get_tree().create_timer(.1).timeout
+	can_be_picked_up = true
 
 func _on_fire_rate_timer_timeout() -> void:
 	can_shoot = true
@@ -218,7 +225,7 @@ func _on_item_pickup_area_body_entered(body):
 	#pegar arma
 	if !player:
 		sleeping = true
-		if body.name == "Player" && !body.armed && body.cheese >= price:
+		if body.name == "Player" && !body.armed && body.cheese >= price && can_be_picked_up:
 			attach(body, body.world)
 			await get_tree().create_timer(0.1).timeout
 			body.armed = true
@@ -244,6 +251,11 @@ func _on_item_pickup_area_body_entered(body):
 		
 		body.apply_damage(1, global_position, 10)
 		can_deal_throw_damage = false
+		
+		if !reload_on_enemy_kill: return
+		
+		if body.hp < 1:
+			ammo = max_ammo
 		
 		return
 	#dano corpo a corpo

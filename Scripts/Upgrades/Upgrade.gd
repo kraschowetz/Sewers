@@ -11,5 +11,5 @@ var manager: Node
 func on_instantiate() -> void:
 	pass
 
-func on_update() -> void:
+func update() -> void:
 	pass

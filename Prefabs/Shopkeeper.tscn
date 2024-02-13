@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1opfciltuk7g"]
+[gd_scene load_steps=16 format=3 uid="uid://d1opfciltuk7g"]
 
 [ext_resource type="Script" path="res://Scripts/Npcs/Shopkeeper.gd" id="1_cnctt"]
 [ext_resource type="PackedScene" uid="uid://bx43f2kmtvbbh" path="res://Prefabs/Items/handgun.tscn" id="2_3wutw"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c6t4yhsjkgcad" path="res://Prefabs/Items/UpgradeItem.tscn" id="9_1hw8y"]
 [ext_resource type="PackedScene" uid="uid://cdi0skxq7g576" path="res://Prefabs/upgrades/up_luck.tscn" id="10_brovw"]
 [ext_resource type="Texture2D" uid="uid://cofhad54al2f2" path="res://Sprites/Shopkeeper/Shopkeeper.png" id="10_t175q"]
+[ext_resource type="PackedScene" uid="uid://d0xowi4hmvljc" path="res://Prefabs/upgrades/Up_reloadingThrow.tscn" id="12_axwgx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rw6q4"]
 size = Vector2(36, 30)
@@ -20,7 +21,7 @@ size = Vector2(36, 30)
 [node name="Shopkeeper" type="StaticBody2D"]
 script = ExtResource("1_cnctt")
 gun_items = Array[PackedScene]([ExtResource("2_3wutw"), ExtResource("2_opdeo"), ExtResource("4_s6w5n"), ExtResource("5_c1v1u"), ExtResource("6_nnqnx"), ExtResource("7_wmnb6"), ExtResource("8_32u2w")])
-upgrades = Array[PackedScene]([ExtResource("8_8fpke"), ExtResource("8_ptrkg"), ExtResource("10_brovw")])
+upgrades = Array[PackedScene]([ExtResource("8_8fpke"), ExtResource("8_ptrkg"), ExtResource("10_brovw"), ExtResource("12_axwgx")])
 upgrade_item = ExtResource("9_1hw8y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

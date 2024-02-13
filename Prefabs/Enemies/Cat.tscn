@@ -186,6 +186,8 @@ wait_time = 0.1
 wait_time = 5.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 24.0
+navigation_layers = 3
 avoidance_enabled = true
 radius = 48.0
 

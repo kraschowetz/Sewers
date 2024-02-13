@@ -77,7 +77,7 @@ func shoot() -> void:
 	ammo -= 1
 	
 	can_shoot = false
-	if(fire_rate_timer.is_stopped()):
+	if fire_rate_timer.is_stopped():
 		fire_rate_timer.start()
 	
 
