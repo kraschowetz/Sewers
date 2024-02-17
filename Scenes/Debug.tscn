@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://3yq4u4ogy3lj"]
+[gd_scene load_steps=104 format=3 uid="uid://3yq4u4ogy3lj"]
 
 [ext_resource type="Script" path="res://Scripts/State_Machine.gd" id="1_8fc2n"]
 [ext_resource type="Script" path="res://Scripts/World/World.gd" id="1_bg4lh"]
@@ -72,6 +72,7 @@
 [ext_resource type="PackedScene" uid="uid://bvxhi77puyf62" path="res://Prefabs/Enemies/CatHandgun.tscn" id="55_5gtdp"]
 [ext_resource type="PackedScene" uid="uid://k3ox8vfrwpor" path="res://Prefabs/Bosses/GreatSludge.tscn" id="56_g282s"]
 [ext_resource type="PackedScene" uid="uid://dlerpvag6rqlq" path="res://Prefabs/Enemies/CatMachineGun.tscn" id="66_o471x"]
+[ext_resource type="Script" path="res://Scripts/UI/ReloadLabel.gd" id="68_otkeq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbyu8"]
 size = Vector2(12, 9.20001)
@@ -571,7 +572,6 @@ position = Vector2(360, 408)
 collision_mask = 17
 script = ExtResource("1_cuyx8")
 reload_bar = NodePath("TextureRect")
-cheese = 99
 i_time = 0.5
 bullet = ExtResource("37_ktjwf")
 
@@ -814,6 +814,32 @@ theme_override_fonts/normal_font = ExtResource("44_6vsmc")
 bbcode_enabled = true
 text = "[center][color=red]YOU DIED[/color]"
 
+[node name="ReloadLabel" type="Label" parent="UI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -16.5
+offset_right = 78.5
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(80, 16)
+theme_override_font_sizes/font_size = 32
+text = "RELOAD!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("68_otkeq")
+
+[node name="Timer" type="Timer" parent="UI/ReloadLabel"]
+one_shot = true
+
+[node name="AnimTimer" type="Timer" parent="UI/ReloadLabel"]
+autostart = true
+
 [node name="Water" type="Sprite2D" parent="."]
 z_index = -15
 material = SubResource("ShaderMaterial_ihor2")
@@ -872,4 +898,7 @@ layer_0/tile_data = PackedInt32Array(851968, 65536, 2, 851969, 65536, 2, 851970,
 [connection signal="body_entered" from="Player/GunPivot/MleeHitArea" to="Player/GunPivot" method="_on_mlee_hit_area_body_entered"]
 [connection signal="body_exited" from="Player/GunPivot/MleeHitArea" to="Player/GunPivot" method="_on_mlee_hit_area_body_exited"]
 [connection signal="timeout" from="Player/GunPivot/UnarmedDamageTimer" to="Player/GunPivot" method="_on_timer_timeout"]
+[connection signal="visibility_changed" from="UI/ReloadLabel" to="UI/ReloadLabel" method="_on_visibility_changed"]
+[connection signal="timeout" from="UI/ReloadLabel/Timer" to="UI/ReloadLabel" method="_on_timer_timeout"]
+[connection signal="timeout" from="UI/ReloadLabel/AnimTimer" to="UI/ReloadLabel" method="_on_anim_timer_timeout"]
 [connection signal="body_entered" from="Exit/Exit" to="." method="_on_exit_body_entered"]

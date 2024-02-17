@@ -204,9 +204,16 @@ func set_visibility(to: bool) -> void:
 
 func generate_stage() -> String:
 	var pth: String
-	var n = randi_range(1, map_ammount)
-	while n == current_stage:
+	var n: int
+	if layer > 5:
 		n = randi_range(1, map_ammount)
+	else:
+		n = randi_range(1, 5)
+	while n == current_stage:
+		if layer > 5:
+			n = randi_range(1, map_ammount)
+		else:
+			n = randi_range(1, 5)
 	current_stage = n
 	pth = "res://Maps/Map_" + str(n) + ".png"
 	if layer % 5 == 0 && layer % 10 != 0:

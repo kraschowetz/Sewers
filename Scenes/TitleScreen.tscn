@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://368ede6aao7w"]
+[gd_scene load_steps=36 format=3 uid="uid://368ede6aao7w"]
 
 [ext_resource type="Material" uid="uid://do5fxwhklhp0n" path="res://Shaders/Materials/ItemShineMaterial.tres" id="1_nr5e2"]
 [ext_resource type="Script" path="res://Scripts/TitleScreen/Title.gd" id="2_0ujnd"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cs40mvj0a333l" path="res://Sprites/UI/Health Icons/H2.png" id="7_liimk"]
 [ext_resource type="Texture2D" uid="uid://ipi0bmou38b4" path="res://Sprites/UI/MenuIcons/MenuPlayerSaturation.png" id="8_m36jd"]
 [ext_resource type="Script" path="res://Scripts/TitleScreen/Vsync.gd" id="9_2n2f4"]
+[ext_resource type="Texture2D" uid="uid://o8f1nu1wqcb3" path="res://Sprites/UI/MenuIcons/MenuPlayerThatB.png" id="10_w8141"]
 [ext_resource type="Script" path="res://Scripts/TitleScreen/ApplyButton.gd" id="10_yw08i"]
 [ext_resource type="Texture2D" uid="uid://c2b171lkxsg4n" path="res://Sprites/UI/MenuIcons/MenuBackground.png" id="17_tsjs3"]
 
@@ -140,7 +141,7 @@ position = Vector2(575, 290)
 scale = Vector2(3, 3)
 texture = ExtResource("3_q1ktd")
 script = ExtResource("4_sjl07")
-textures = Array[Texture2D]([ExtResource("3_q1ktd"), ExtResource("5_gmmnb"), ExtResource("2_m37cp"), ExtResource("7_liimk"), ExtResource("8_m36jd")])
+textures = Array[Texture2D]([ExtResource("3_q1ktd"), ExtResource("5_gmmnb"), ExtResource("2_m37cp"), ExtResource("7_liimk"), ExtResource("8_m36jd"), ExtResource("10_w8141")])
 
 [node name="PlayButton" type="Button" parent="MainLayer"]
 material = ExtResource("1_nr5e2")

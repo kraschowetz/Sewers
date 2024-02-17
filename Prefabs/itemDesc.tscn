@@ -4,11 +4,11 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_2nyps"]
 
-[node name="ItemDesc" type="Node2D" node_paths=PackedStringArray("box", "text")]
-position = Vector2(539, 228)
+[node name="ItemDesc" type="Node2D" node_paths=PackedStringArray("text")]
 script = ExtResource("1_sdw8l")
-box = NodePath("Sprite2D")
 text = NodePath("RichTextLabel")
+_min = Vector2(2, 2)
+_max = Vector2(910, 502)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
