@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://368ede6aao7w"]
+[gd_scene load_steps=35 format=3 uid="uid://368ede6aao7w"]
 
 [ext_resource type="Material" uid="uid://do5fxwhklhp0n" path="res://Shaders/Materials/ItemShineMaterial.tres" id="1_nr5e2"]
 [ext_resource type="Script" path="res://Scripts/TitleScreen/Title.gd" id="2_0ujnd"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://ipi0bmou38b4" path="res://Sprites/UI/MenuIcons/MenuPlayerSaturation.png" id="8_m36jd"]
 [ext_resource type="Script" path="res://Scripts/TitleScreen/Vsync.gd" id="9_2n2f4"]
 [ext_resource type="Script" path="res://Scripts/TitleScreen/ApplyButton.gd" id="10_yw08i"]
+[ext_resource type="Texture2D" uid="uid://c2b171lkxsg4n" path="res://Sprites/UI/MenuIcons/MenuBackground.png" id="17_tsjs3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4sn6i"]
 shader = ExtResource("3_71chk")
@@ -128,7 +129,7 @@ offset_top = 144.0
 offset_right = 1153.0
 offset_bottom = 195.0
 theme_override_font_sizes/font_size = 50
-text = "ERROR"
+text = "RAT GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_0ujnd")
@@ -263,6 +264,13 @@ text = "APPLY
 "
 flat = true
 script = ExtResource("10_yw08i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.603922, 0.603922, 0.603922, 1)
+z_index = -100
+position = Vector2(576, 325)
+scale = Vector2(3, 3)
+texture = ExtResource("17_tsjs3")
 
 [connection signal="mouse_entered" from="MainLayer/PlayButton" to="MainLayer/PlayButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainLayer/PlayButton" to="MainLayer/PlayButton" method="_on_mouse_exited"]

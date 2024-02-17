@@ -1,8 +1,9 @@
+res://Prefabs
+res://Scripts/UI
 res://Shaders
 res://Scripts/TitleScreen
 res://Sprites/TIles/Water
 res://TileSets
-res://Prefabs
 res://Scripts/World
 res://
 C:/Users/joaok/OneDrive/Documentos/Sewers
@@ -19,4 +20,3 @@ C:/Users/joaok/OneDrive/Documentos/Sewers/Scripts/TitleScreen
 res://Sprites/UI/Health Icons
 res://Sprites/Upgrades
 res://Prefabs/upgrades
-res://Scripts/Npcs

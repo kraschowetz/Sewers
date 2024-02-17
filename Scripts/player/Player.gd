@@ -17,6 +17,10 @@ signal ammo_changed
 @export var cheese: int
 @export var i_time: float
 
+@export_category("GUN CONFIG")
+@export var bullet: PackedScene
+@export var knockback_mod: float = 1
+
 @export_category("DEBUG")
 @export var godmode: bool
 

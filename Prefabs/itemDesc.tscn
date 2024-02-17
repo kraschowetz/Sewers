@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbkyu54q2n4qu"]
+
+[ext_resource type="Script" path="res://Scripts/UI/ItemDesc.gd" id="1_sdw8l"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_2nyps"]
+
+[node name="ItemDesc" type="Node2D" node_paths=PackedStringArray("box", "text")]
+position = Vector2(539, 228)
+script = ExtResource("1_sdw8l")
+box = NodePath("Sprite2D")
+text = NodePath("RichTextLabel")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.203922, 0.203922, 0.203922, 0.713726)
+z_index = 98
+scale = Vector2(240, 144)
+texture = SubResource("CanvasTexture_2nyps")
+offset = Vector2(0.5, 0.5)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 909
+offset_left = 6.0
+offset_right = 234.0
+offset_bottom = 143.0
+bbcode_enabled = true
+text = "[color=yellow]REVOLVER[/color]
+
+DMG: [color=orange]MID[/color]
+RELOAD TIME: [color=green]FAST[/color]
+
+pew pew ye haw"

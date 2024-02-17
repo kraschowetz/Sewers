@@ -34,6 +34,8 @@ class_name Gun
 @export_category("visuals")
 @export var spr: Texture
 @export var bar: TextureRect
+@export var item_desc: PackedScene
+@export_multiline var desc: String
 
 signal mlee_damage(dmg: int, origin: Vector2, mod: float)
 
@@ -47,12 +49,17 @@ var shoot_num: int = 0
 var can_deal_throw_damage: bool = false
 var can_be_picked_up: bool = true
 
+var itm_dsc: Node
+
 #variavavies de upgrades
 var reload_on_enemy_kill: bool = false
 
 var connected: bool = false
 
 func _ready() -> void:
+	
+	item_pickup_area.input_pickable = true
+	
 	ammo = max_ammo
 	sprite.z_index = 3
 	
@@ -63,6 +70,7 @@ func _ready() -> void:
 	
 	if price > 0:
 		price_label.text = "$%s" % price if price > 9 else "$0%s" % price
+	
 
 func _process(delta) -> void:
 	if player: return
@@ -122,6 +130,12 @@ func on_shoot() -> void:
 	precision_recovery_timer.stop()
 	ammo -= 1
 	
+	var b: PackedScene
+	
+	if bullet:
+		b = bullet
+	else:
+		b = player.bullet
 	#atualizar UI
 	player.emit_signal("ammo_changed")
 	
@@ -129,7 +143,7 @@ func on_shoot() -> void:
 	
 	#atirar uma vez por ponto alvo
 	for i in range(target_point.size()):
-		instance = bullet.instantiate()
+		instance = b.instantiate()
 		
 		instance.dmg = damage
 		
@@ -221,11 +235,14 @@ func _on_reload_timer_timeout() -> void:
 	bar.visible = false
 	player.emit_signal("ammo_changed")
 
-func _on_item_pickup_area_body_entered(body):
+func _on_item_pickup_area_body_entered(body) -> void:
 	#pegar arma
 	if !player:
 		sleeping = true
 		if body.name == "Player" && !body.armed && body.cheese >= price && can_be_picked_up:
+			if itm_dsc:
+				itm_dsc.queue_free()
+				itm_dsc = null
 			attach(body, body.world)
 			await get_tree().create_timer(0.1).timeout
 			body.armed = true
@@ -265,9 +282,40 @@ func _on_item_pickup_area_body_entered(body):
 	
 	mlee_damage.connect(body.on_mlee_damage)
 
-func _on_item_pickup_area_body_exited(body):
+func _on_item_pickup_area_body_exited(body) -> void:
 	if body.get_class() != "CharacterBody2D": return
 	if body.name == "Player": return
 	if !is_connected("mlee_damage", body.on_mlee_damage): return
 	
 	mlee_damage.disconnect(body.on_mlee_damage)
+
+func _on_item_pickup_area_mouse_entered() -> void:
+	if !item_desc: return
+	if player: return
+	if !sleeping: return
+	
+	itm_dsc = item_desc.instantiate()
+	var p: Vector2 = Vector2(position.x - 48 * 2.5, position.y - 48 * 3.5)
+	itm_dsc.global_position = p
+	if !world:
+		get_parent().call_deferred("add_child", itm_dsc)
+	else:
+		world.call_deferred("add_child", itm_dsc)
+		world.unload_after_layer_exit.append(itm_dsc)
+	itm_dsc.set_text(desc)
+
+
+func _on_item_pickup_area_mouse_exited() -> void:
+	if !item_desc: return
+	if player: return
+	if !sleeping: return
+	if !itm_dsc: return
+	
+	if world:
+		for i in range(world.unload_after_layer_exit.size()):
+			if world.unload_after_layer_exit[i] == itm_dsc:
+				world.unload_after_layer_exit.remove_at(i)
+				break
+	
+	itm_dsc.queue_free()
+	itm_dsc = null

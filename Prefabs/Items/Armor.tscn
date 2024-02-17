@@ -18,6 +18,9 @@ radius = 28.0713
 [node name="Armor" type="StaticBody2D"]
 script = ExtResource("1_lfrgd")
 price = 1
+text = "[color=yellow]ARMOR[/color]
+
+endure one extra hit"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_7ycfd")
@@ -40,3 +43,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

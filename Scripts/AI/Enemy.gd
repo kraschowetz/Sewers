@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 
 @export_category("stats")
+@export var is_boss: bool = false
 @export var hp: int
 @export var speed: int
 @export var damage: int

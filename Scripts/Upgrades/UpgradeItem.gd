@@ -1,10 +1,13 @@
 extends StaticBody2D
 
+@onready var up_desc: PackedScene = preload("res://Prefabs/itemDesc.tscn")
+
 @export var price: int
 @export var upgrade: PackedScene
 
 var world: World
 var player: Player
+var itm_dsc: Node
 
 func _ready() -> void:
 	world = get_parent()
@@ -34,5 +37,17 @@ func _on_area_2d_body_entered(body) -> void:
 		for i  in world.unload_after_layer_exit.size():
 			if world.unload_after_layer_exit[i] == self:
 				world.unload_after_layer_exit[i] = null
+		if itm_dsc:
+			itm_dsc.queue_free()
+			itm_dsc = null
 		queue_free()
 
+func _on_area_2d_mouse_entered() -> void:
+	itm_dsc = up_desc.instantiate()
+	itm_dsc.global_position = Vector2(-48 * 2.5, -48 * 3.5)
+	call_deferred("add_child", itm_dsc)
+	itm_dsc.set_text(upgrade.instantiate().upgrade_desc)
+
+func _on_area_2d_mouse_exited() -> void:
+	itm_dsc.queue_free()
+	itm_dsc = null

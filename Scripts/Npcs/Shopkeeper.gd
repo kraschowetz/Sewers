@@ -44,6 +44,7 @@ func generate_items() -> void:
 				else:
 					instance = gun_items[randi_range(0, gun_items.size() - 1)].instantiate()
 				items[0] = instance.name
+				instance.world = world
 				
 			2: #third slot is always an upgrade
 				var up = upgrades[randi_range(1, upgrades.size() - 1)]
@@ -58,6 +59,7 @@ func generate_items() -> void:
 					if randi_range(1, 2) < 2:
 						instance = gun_items[randi_range(0, gun_items.size() - 1)].instantiate()
 						items[2] = instance.name
+						instance.world = world
 					else:
 						var up = upgrades[randi_range(1, upgrades.size() - 1)]
 						instance = upgrade_item.instantiate()

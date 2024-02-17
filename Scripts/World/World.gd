@@ -244,7 +244,7 @@ func transition() -> void:
 	
 	if layer % 10 == 0:
 		change_tileset_on_next_round = true
-	if change_tileset_on_next_round && layer % 20 != 0:
+	if change_tileset_on_next_round && layer % 10 != 0:
 		update_tileset()
 		change_tileset_on_next_round = false
 	
