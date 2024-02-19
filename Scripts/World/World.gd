@@ -5,6 +5,7 @@ class_name World
 @onready var sub_map: TileMap = $TileMapLower
 @onready var overlay_map: TileMap = $OverlayMap
 @onready var water: Sprite2D = $Water
+@onready var hp_bar: Control = $UI/BossHealth
 @onready var cheese: PackedScene = preload("res://Prefabs/Items/cheese.tscn")
 @onready var shopkeeper: PackedScene = preload("res://Prefabs/Shopkeeper.tscn")
 @onready var spikes: PackedScene = preload("res://Prefabs/spikes.tscn")
@@ -149,6 +150,7 @@ func generate_world() -> void:
 						for i in range(boss_dict["data_%s" % current_boss_list].chance.size()):
 							if r <= boss_dict["data_%s" % current_boss_list].chance[i]:
 								entity = boss_list[boss_dict["data_%s" % current_boss_list].ids[i]].instantiate()
+								hp_bar.set_bar(entity)
 								break
 					
 					entity.global_position = Vector2((x + 1.5) * 48, (y + .5) * 48)

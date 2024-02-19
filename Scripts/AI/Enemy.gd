@@ -2,10 +2,12 @@ extends CharacterBody2D
 class_name Enemy
 
 @export_category("stats")
+@export var enemy_name: String #only used in bosses
 @export var is_boss: bool = false
 @export var hp: int
 @export var speed: int
 @export var damage: int
+
 @export_category("front-end")
 @export var sprite: AnimatedSprite2D
 @export var can_flip: bool
@@ -24,6 +26,7 @@ var external_velocity: Vector2
 var is_on_spikes: bool = false
 
 signal defeated(pos: Vector2)
+signal hp_changed(_hp: int)
 
 func _ready() -> void:
 	player = world.get_node("Player")
@@ -59,6 +62,8 @@ func apply_damage(dmg: int, origin: Vector2, mod: float) -> void:
 	hp -= dmg
 	if is_defeated: return
 	if invincible: return
+	
+	if is_boss: hp_changed.emit(hp)
 	
 	#calculate external velocity
 	var direction: Vector2 = (origin - position).normalized()
