@@ -26,6 +26,7 @@ func update() -> void:
 	gun.update()
 
 func _process(_delta) -> void:
+	if player.world.paused: return
 	if player.hp < 1: return
 	
 	flip_gun()

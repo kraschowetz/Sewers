@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://3yq4u4ogy3lj"]
+[gd_scene load_steps=109 format=3 uid="uid://3yq4u4ogy3lj"]
 
 [ext_resource type="Script" path="res://Scripts/State_Machine.gd" id="1_8fc2n"]
 [ext_resource type="Script" path="res://Scripts/World/World.gd" id="1_bg4lh"]
@@ -74,7 +74,7 @@
 [ext_resource type="PackedScene" uid="uid://dlerpvag6rqlq" path="res://Prefabs/Enemies/CatMachineGun.tscn" id="66_o471x"]
 [ext_resource type="Script" path="res://Scripts/UI/ReloadLabel.gd" id="68_otkeq"]
 [ext_resource type="Script" path="res://Scripts/UI/BossHealth.gd" id="69_dd44a"]
-[ext_resource type="PackedScene" uid="uid://wrgs2h3idwow" path="res://Prefabs/Items/revolver.tscn" id="75_6jb6o"]
+[ext_resource type="Script" path="res://Scripts/UI/PausedScreen.gd" id="70_qx7l0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbyu8"]
 size = Vector2(12, 9.20001)
@@ -252,6 +252,66 @@ shader_parameter/shine_speed = 0.0
 shader_parameter/shine_size = 10.0
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_tk6pv"]
+
+[sub_resource type="Shader" id="Shader_qxj1p"]
+code = "shader_type canvas_item;
+
+uniform float intensity = 3.0;
+uniform float wiggle_time = 1.5;
+
+uniform vec4 shine_color;
+uniform float shine_speed;
+uniform float shine_size;
+
+void vertex() {
+	VERTEX.y += sin(TIME * wiggle_time + VERTEX.x * 0.05) * intensity;
+}
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	float shine = step(1.0 - shine_size * 0.5, 0.5 + 0.5 * sin(UV.x - UV.y + TIME * shine_speed));
+	COLOR.rgb = mix(COLOR.rgb, shine_color.rgb, shine * shine_color.a);
+}
+
+/*
+---DOCUMENTACIÓN---
+
+	-variaveis do wobble
+	-variaveis do brilho
+	
+	void vertex:
+		
+		posição y do vertice += função de seno(
+			tempo * mod_de_tempo + posição_X *
+			 0.05
+		) * intensidade_do_wobble;
+		
+	
+	void fragment:
+		brilho = interpolar(
+			LIMITE: 1 - tamanho_do_brilho * 0.5,
+			VALOR: 0.5 + função de seno(
+				posição_X - posição_Y + tempo * velocidade_dp_brilho
+			) * 0.5;
+		)
+		
+		cor = interpolação_linear(
+			VALOR_A: cor,
+			VALOR_B: cor_do_brilho,
+			TEMPO: transparencia_do_brilho
+		);
+		
+	
+
+*/"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bw14g"]
+shader = SubResource("Shader_qxj1p")
+shader_parameter/intensity = 3.0
+shader_parameter/wiggle_time = 0.5
+shader_parameter/shine_color = Vector4(1, 1, 1, 1)
+shader_parameter/shine_speed = 5.0
+shader_parameter/shine_size = 0.02
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ihor2"]
 shader = ExtResource("41_exubl")
@@ -564,7 +624,7 @@ path = "res://Maps/Map_6.png"
 enemy_list = Array[PackedScene]([ExtResource("2_ga5hr"), ExtResource("2_yc2cr"), ExtResource("55_5gtdp"), ExtResource("66_o471x")])
 boss_list = Array[PackedScene]([ExtResource("56_g282s")])
 enemy_spawner_dictionary = NodePath("Enemy Spawner Dictionary")
-layer = 9
+layer = 5
 
 [node name="Enemy Spawner Dictionary" type="Node" parent="."]
 script = ExtResource("4_p0nul")
@@ -577,7 +637,7 @@ position = Vector2(360, 408)
 collision_mask = 17
 script = ExtResource("1_cuyx8")
 reload_bar = NodePath("TextureRect")
-cheese = 10
+cheese = 99
 i_time = 0.5
 bullet = ExtResource("37_ktjwf")
 
@@ -890,6 +950,29 @@ text = "DJ ROGERIN"
 wait_time = 0.75
 one_shot = true
 
+[node name="PausedScreen" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 40.0
+script = ExtResource("70_qx7l0")
+
+[node name="DarkLayer" type="Sprite2D" parent="UI/PausedScreen"]
+self_modulate = Color(0, 0, 0, 0.603922)
+position = Vector2(576.75, 299)
+scale = Vector2(1154.5, 700)
+texture = SubResource("CanvasTexture_ag5am")
+
+[node name="Label" type="Label" parent="UI/PausedScreen"]
+material = SubResource("ShaderMaterial_bw14g")
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 48.0
+text = "GAME PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Water" type="Sprite2D" parent="."]
 z_index = -15
 material = SubResource("ShaderMaterial_ihor2")
@@ -941,9 +1024,7 @@ tile_set = SubResource("TileSet_xkd5u")
 format = 2
 layer_0/tile_data = PackedInt32Array(851968, 65536, 2, 851969, 65536, 2, 851970, 65536, 2, 851971, 65536, 2, 851972, 65536, 2, 851973, 65536, 2, 851974, 65536, 2, 851975, 65536, 2, 851976, 65536, 2, 851977, 65536, 2, 851978, 65536, 2, 851979, 65536, 2, 851980, 65536, 2, 851981, 65536, 2, 851982, 65536, 2, 851983, 65536, 2, 851984, 65536, 2, 851985, 65536, 2, 851986, 65536, 2, 851991, 65536, 2, 0, 65536, 2, 65536, 65536, 2, 131072, 65536, 2, 196608, 65536, 2, 262144, 65536, 2, 327680, 65536, 2, 393216, 65536, 2, 458752, 65536, 2, 524288, 65536, 2, 589824, 65536, 2, 655360, 65536, 2, 720896, 65536, 2, 786432, 65536, 2)
 
-[node name="Revolver" parent="." instance=ExtResource("75_6jb6o")]
-position = Vector2(204, 467)
-
+[connection signal="state_changed" from="." to="UI/PausedScreen" method="_on_world_state_changed"]
 [connection signal="body_entered" from="Player/GunPivot/Musket/ItemPickupArea" to="Player/GunPivot/Musket" method="_on_item_pickup_area_body_entered"]
 [connection signal="body_exited" from="Player/GunPivot/Musket/ItemPickupArea" to="Player/GunPivot/Musket" method="_on_item_pickup_area_body_exited"]
 [connection signal="mouse_entered" from="Player/GunPivot/Musket/ItemPickupArea" to="Player/GunPivot/Musket" method="_on_item_pickup_area_mouse_entered"]

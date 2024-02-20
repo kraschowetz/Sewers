@@ -34,8 +34,11 @@ var generating_world: bool
 var unload_after_layer_exit: Array[Node]
 var spawn_cheese_on_enemy_kill: bool = false
 var change_tileset_on_next_round: bool = false
+var paused: bool = false
 
-func _ready():
+signal state_changed
+
+func _ready() -> void:
 	if(!debug):
 		next_cheese = calc_next_cheese_round()
 		transition()
@@ -48,6 +51,14 @@ func update_tileset() -> void:
 	map.tile_set = tile_sets[i]
 	sub_map.tile_set = tile_sets[i]
 	water.texture = water_textures[i]
+
+func _input(_event):
+	if generating_world: return
+	if !Input.is_action_just_pressed("Esc"): return
+	
+	state_changed.emit()
+	paused = !paused
+	$UI/LayerLabel.visible = !paused
 
 func on_enemy_defeated(pos: Vector2) -> void:
 	enemy_count -= 1

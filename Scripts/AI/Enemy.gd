@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Enemy
 
+@onready var hp_bar = preload("res://Prefabs/EnemyHealthBar.tscn")
+
 @export_category("stats")
 @export var enemy_name: String #only used in bosses
 @export var is_boss: bool = false
@@ -33,11 +35,17 @@ func _ready() -> void:
 	max_hp = hp
 	if sprite:
 		sprite.speed_scale = 1 + randf_range(-.3, .3)
+	if hp > 1 && !is_boss:
+		var h = hp_bar.instantiate()
+		h.position = Vector2(-24, -32)
+		call_deferred("add_child", h)
+		h.set_bar(self)
 	var s = speed
 	speed = 0
 	await  get_tree().create_timer(1.75).timeout
 	active = true
 	speed = s
+		
 
 func apply_external_velocity(dur: float, vel: Vector2) -> void:
 	external_velocity = vel
@@ -63,7 +71,7 @@ func apply_damage(dmg: int, origin: Vector2, mod: float) -> void:
 	if is_defeated: return
 	if invincible: return
 	
-	if is_boss: hp_changed.emit(hp)
+	hp_changed.emit(hp)
 	
 	#calculate external velocity
 	var direction: Vector2 = (origin - position).normalized()

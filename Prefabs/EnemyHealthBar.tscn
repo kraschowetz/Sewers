@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4xbunh8n36ex"]
+
+[ext_resource type="Script" path="res://Scripts/UI/EnemyHealthBar.gd" id="1_6fxks"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_n0hj8"]
+
+[node name="EnemyHealthBar" type="Control" node_paths=PackedStringArray("bar", "tween_bar")]
+z_index = 99
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6fxks")
+bar = NodePath("Bar")
+tween_bar = NodePath("TweenBar")
+
+[node name="BG" type="TextureRect" parent="."]
+modulate = Color(0.176471, 0.176471, 0.176471, 0.698039)
+z_index = 97
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 8.0
+texture = SubResource("CanvasTexture_n0hj8")
+
+[node name="TweenBar" type="TextureRect" parent="."]
+modulate = Color(0.941176, 0.709804, 0.254902, 1)
+z_index = 98
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 8.0
+texture = SubResource("CanvasTexture_n0hj8")
+
+[node name="Bar" type="TextureRect" parent="."]
+modulate = Color(0.678431, 0.184314, 0.270588, 1)
+z_index = 99
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 8.0
+texture = SubResource("CanvasTexture_n0hj8")
