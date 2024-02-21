@@ -34,7 +34,9 @@ func _ready() -> void:
 	timer.wait_time = reload_time
 
 func _process(delta):
-	if body.is_defeated: return
+	if body.is_defeated: 
+		visible = false
+		return
 	
 	ref.look_at(target)
 	pivot.rotation = lerp(pivot.rotation, ref.rotation, delta * rotation_delay)

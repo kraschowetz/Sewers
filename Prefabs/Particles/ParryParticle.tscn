@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv63mstvsqchf"]
+
+[ext_resource type="Texture2D" uid="uid://b3c4vnhl8e4oj" path="res://Sprites/Particles/ParryParticle.png" id="1_au8b2"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ikrf"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 256.0
+initial_velocity_max = 256.0
+gravity = Vector3(0, 0, 0)
+
+[node name="ParryParticle" type="GPUParticles2D"]
+z_index = 10
+position = Vector2(792.016, 256.183)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_7ikrf")
+texture = ExtResource("1_au8b2")
+lifetime = 0.33
+one_shot = true
+explosiveness = 1.0

@@ -1,8 +1,8 @@
 res://Scenes/Debug.tscn
-res://Scripts/AI/Enemy_Wandering_AI.gd
-res://Scripts/TitleScreen/Title.gd
 res://Shaders/ItemShine.gdshader
 res://Shaders/Materials/ItemShineMaterial.tres
+res://Scripts/AI/Enemy_Wandering_AI.gd
+res://Scripts/TitleScreen/Title.gd
 res://TileSets/BlueTileSet.tres
 res://TileSets/GreenTileSet.tres
 res://TileSets/BrownTIleSet.tres
@@ -10,5 +10,7 @@ res://Shaders/ChromaticAberration.gdshader
 res://Shaders/Water.gdshader
 res://Shaders/DownwardsWobble.gdshader
 res://Shaders/SimpleWobble.gdshader
-res://Scripts/UI/ReloadLabel.gd
-res://Titles.txt
+res://Scripts/Projectiles/Bullet.gd
+res://Prefabs/Particles/ParryParticle.tscn
+res://Scripts/World/World.gd
+res://Prefabs/Shopkeeper.tscn

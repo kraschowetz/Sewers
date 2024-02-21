@@ -238,7 +238,8 @@ func _on_reload_timer_timeout() -> void:
 func _on_item_pickup_area_body_entered(body) -> void:
 	#pegar arma
 	if !player:
-		sleeping = true
+		if body.name != "Player":
+			sleeping = true
 		if body.name == "Player" && !body.armed && body.cheese >= price && can_be_picked_up:
 			if itm_dsc:
 				itm_dsc.queue_free()

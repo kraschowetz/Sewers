@@ -1,9 +1,9 @@
 Timer
+Node
 Label
 RichTextLabel
 Sprite2D
 Node2D
-Node
 State
 NavigationObstacle2D
 AnimatedSprite2D

@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://3yq4u4ogy3lj"]
+[gd_scene load_steps=111 format=3 uid="uid://3yq4u4ogy3lj"]
 
 [ext_resource type="Script" path="res://Scripts/State_Machine.gd" id="1_8fc2n"]
 [ext_resource type="Script" path="res://Scripts/World/World.gd" id="1_bg4lh"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dw67vu311msyh" path="res://Sprites/Player/Idle/player6.png" id="9_0i2j7"]
 [ext_resource type="Texture2D" uid="uid://diunf7dqubw55" path="res://Sprites/Player/Idle/player7.png" id="10_jcbo4"]
 [ext_resource type="Texture2D" uid="uid://btjruv6nq08un" path="res://Sprites/Player/Idle/player8.png" id="11_ijije"]
+[ext_resource type="PackedScene" uid="uid://brar4t2yv5wyx" path="res://Prefabs/Bosses/knight.tscn" id="12_7xljv"]
 [ext_resource type="Texture2D" uid="uid://dp5j8741vcvkb" path="res://Sprites/Player/Idle/player9.png" id="12_15j7c"]
 [ext_resource type="Texture2D" uid="uid://bsgh13n1selx4" path="res://Sprites/Player/Run/player Run1.png" id="15_lcwvk"]
 [ext_resource type="Texture2D" uid="uid://dkaxi3hqwk8o" path="res://Sprites/Player/Run/player Run2.png" id="16_kyn3w"]
@@ -73,6 +74,8 @@
 [ext_resource type="PackedScene" uid="uid://k3ox8vfrwpor" path="res://Prefabs/Bosses/GreatSludge.tscn" id="56_g282s"]
 [ext_resource type="PackedScene" uid="uid://dlerpvag6rqlq" path="res://Prefabs/Enemies/CatMachineGun.tscn" id="66_o471x"]
 [ext_resource type="Script" path="res://Scripts/UI/ReloadLabel.gd" id="68_otkeq"]
+[ext_resource type="Script" path="res://Scripts/UI/BossHealth.gd" id="69_qotwk"]
+[ext_resource type="Script" path="res://Scripts/UI/PausedScreen.gd" id="70_omvb8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbyu8"]
 size = Vector2(12, 9.20001)
@@ -248,6 +251,70 @@ shader_parameter/wiggle_time = 2.0
 shader_parameter/shine_color = Vector4(1, 0, 0, 1)
 shader_parameter/shine_speed = 0.0
 shader_parameter/shine_size = 10.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_u2bj4"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_wnknm"]
+
+[sub_resource type="Shader" id="Shader_qxj1p"]
+code = "shader_type canvas_item;
+
+uniform float intensity = 3.0;
+uniform float wiggle_time = 1.5;
+
+uniform vec4 shine_color;
+uniform float shine_speed;
+uniform float shine_size;
+
+void vertex() {
+	VERTEX.y += sin(TIME * wiggle_time + VERTEX.x * 0.05) * intensity;
+}
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	float shine = step(1.0 - shine_size * 0.5, 0.5 + 0.5 * sin(UV.x - UV.y + TIME * shine_speed));
+	COLOR.rgb = mix(COLOR.rgb, shine_color.rgb, shine * shine_color.a);
+}
+
+/*
+---DOCUMENTACIÓN---
+
+	-variaveis do wobble
+	-variaveis do brilho
+	
+	void vertex:
+		
+		posição y do vertice += função de seno(
+			tempo * mod_de_tempo + posição_X *
+			 0.05
+		) * intensidade_do_wobble;
+		
+	
+	void fragment:
+		brilho = interpolar(
+			LIMITE: 1 - tamanho_do_brilho * 0.5,
+			VALOR: 0.5 + função de seno(
+				posição_X - posição_Y + tempo * velocidade_dp_brilho
+			) * 0.5;
+		)
+		
+		cor = interpolação_linear(
+			VALOR_A: cor,
+			VALOR_B: cor_do_brilho,
+			TEMPO: transparencia_do_brilho
+		);
+		
+	
+
+*/"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_in5wh"]
+shader = SubResource("Shader_qxj1p")
+shader_parameter/intensity = 3.0
+shader_parameter/wiggle_time = 0.5
+shader_parameter/shine_color = Vector4(1, 1, 1, 1)
+shader_parameter/shine_speed = 5.0
+shader_parameter/shine_size = 0.02
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ihor2"]
 shader = ExtResource("41_exubl")
@@ -558,7 +625,7 @@ water_textures = Array[Texture2D]([ExtResource("36_3vpyr"), ExtResource("6_yj1jd
 map_ammount = 7
 path = "res://Maps/Map_6.png"
 enemy_list = Array[PackedScene]([ExtResource("2_ga5hr"), ExtResource("2_yc2cr"), ExtResource("55_5gtdp"), ExtResource("66_o471x")])
-boss_list = Array[PackedScene]([ExtResource("56_g282s")])
+boss_list = Array[PackedScene]([ExtResource("56_g282s"), ExtResource("12_7xljv")])
 enemy_spawner_dictionary = NodePath("Enemy Spawner Dictionary")
 
 [node name="Enemy Spawner Dictionary" type="Node" parent="."]
@@ -840,6 +907,73 @@ one_shot = true
 [node name="AnimTimer" type="Timer" parent="UI/ReloadLabel"]
 autostart = true
 
+[node name="BossHealth" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("69_qotwk")
+max_hp = 100
+
+[node name="Bar" type="TextureRect" parent="UI/BossHealth"]
+modulate = Color(0.678431, 0.184314, 0.270588, 1)
+z_index = 99
+layout_mode = 0
+offset_left = 65.0
+offset_top = 600.0
+offset_right = 1065.0
+offset_bottom = 616.0
+texture = SubResource("CanvasTexture_u2bj4")
+expand_mode = 1
+
+[node name="TweenBar" type="TextureRect" parent="UI/BossHealth"]
+modulate = Color(0.941176, 0.709804, 0.254902, 1)
+z_index = 98
+layout_mode = 0
+offset_left = 65.0
+offset_top = 600.0
+offset_right = 1065.0
+offset_bottom = 616.0
+texture = SubResource("CanvasTexture_u2bj4")
+expand_mode = 1
+
+[node name="BossLabel" type="Label" parent="UI/BossHealth"]
+material = ExtResource("45_e4iq0")
+layout_mode = 0
+offset_left = 73.0
+offset_top = 571.0
+offset_right = 1064.0
+offset_bottom = 588.0
+text = "DJ ROGERIN"
+
+[node name="Timer" type="Timer" parent="UI/BossHealth"]
+wait_time = 0.75
+one_shot = true
+
+[node name="PausedScreen" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 40.0
+script = ExtResource("70_omvb8")
+
+[node name="DarkLayer" type="Sprite2D" parent="UI/PausedScreen"]
+self_modulate = Color(0, 0, 0, 0.603922)
+position = Vector2(576.75, 299)
+scale = Vector2(1154.5, 700)
+texture = SubResource("CanvasTexture_wnknm")
+
+[node name="Label" type="Label" parent="UI/PausedScreen"]
+material = SubResource("ShaderMaterial_in5wh")
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 48.0
+text = "GAME PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Water" type="Sprite2D" parent="."]
 z_index = -15
 material = SubResource("ShaderMaterial_ihor2")
@@ -891,6 +1025,7 @@ tile_set = SubResource("TileSet_xkd5u")
 format = 2
 layer_0/tile_data = PackedInt32Array(851968, 65536, 2, 851969, 65536, 2, 851970, 65536, 2, 851971, 65536, 2, 851972, 65536, 2, 851973, 65536, 2, 851974, 65536, 2, 851975, 65536, 2, 851976, 65536, 2, 851977, 65536, 2, 851978, 65536, 2, 851979, 65536, 2, 851980, 65536, 2, 851981, 65536, 2, 851982, 65536, 2, 851983, 65536, 2, 851984, 65536, 2, 851985, 65536, 2, 851986, 65536, 2, 851991, 65536, 2, 0, 65536, 2, 65536, 65536, 2, 131072, 65536, 2, 196608, 65536, 2, 262144, 65536, 2, 327680, 65536, 2, 393216, 65536, 2, 458752, 65536, 2, 524288, 65536, 2, 589824, 65536, 2, 655360, 65536, 2, 720896, 65536, 2, 786432, 65536, 2)
 
+[connection signal="state_changed" from="." to="UI/PausedScreen" method="_on_world_state_changed"]
 [connection signal="body_entered" from="Player/GunPivot/Musket/ItemPickupArea" to="Player/GunPivot/Musket" method="_on_item_pickup_area_body_entered"]
 [connection signal="body_exited" from="Player/GunPivot/Musket/ItemPickupArea" to="Player/GunPivot/Musket" method="_on_item_pickup_area_body_exited"]
 [connection signal="mouse_entered" from="Player/GunPivot/Musket/ItemPickupArea" to="Player/GunPivot/Musket" method="_on_item_pickup_area_mouse_entered"]
@@ -901,4 +1036,5 @@ layer_0/tile_data = PackedInt32Array(851968, 65536, 2, 851969, 65536, 2, 851970,
 [connection signal="visibility_changed" from="UI/ReloadLabel" to="UI/ReloadLabel" method="_on_visibility_changed"]
 [connection signal="timeout" from="UI/ReloadLabel/Timer" to="UI/ReloadLabel" method="_on_timer_timeout"]
 [connection signal="timeout" from="UI/ReloadLabel/AnimTimer" to="UI/ReloadLabel" method="_on_anim_timer_timeout"]
+[connection signal="timeout" from="UI/BossHealth/Timer" to="UI/BossHealth" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Exit/Exit" to="." method="_on_exit_body_entered"]

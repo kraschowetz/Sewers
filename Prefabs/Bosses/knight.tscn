@@ -1,0 +1,200 @@
+[gd_scene load_steps=25 format=3 uid="uid://brar4t2yv5wyx"]
+
+[ext_resource type="Script" path="res://Scripts/AI/Enemy.gd" id="1_lu870"]
+[ext_resource type="PackedScene" uid="uid://pybljjt42b46" path="res://Prefabs/Items/shotgun.tscn" id="2_6yobf"]
+[ext_resource type="Texture2D" uid="uid://c4qqf3lcqqopn" path="res://Sprites/Enemies/Knight/Walking/KnightWalking1.png" id="2_vsgcv"]
+[ext_resource type="Texture2D" uid="uid://k5xes7ew0sfs" path="res://Sprites/Enemies/Knight/Walking/KnightWalking2.png" id="3_ev2xu"]
+[ext_resource type="Texture2D" uid="uid://b2chpjdwteomr" path="res://Sprites/Enemies/Knight/Idle/KnightIdle1.png" id="4_avd40"]
+[ext_resource type="Texture2D" uid="uid://cjv0q8lrls2e1" path="res://Sprites/Enemies/Knight/Walking/KnightWalking3.png" id="4_xk34x"]
+[ext_resource type="Texture2D" uid="uid://dchppds53484q" path="res://Sprites/Enemies/Knight/Idle/KnightIdle2.png" id="5_evx75"]
+[ext_resource type="Texture2D" uid="uid://cjpy6v3og23gq" path="res://Sprites/Enemies/Knight/Walking/KnightWalking4.png" id="5_nw7fh"]
+[ext_resource type="Texture2D" uid="uid://bdy3xci0erwa3" path="res://Sprites/Enemies/Knight/Walking/KnightWalking5.png" id="6_rqgmg"]
+[ext_resource type="Texture2D" uid="uid://c8qa637veirvo" path="res://Sprites/Enemies/Knight/Walking/KnightWalking6.png" id="7_tuqgq"]
+[ext_resource type="Texture2D" uid="uid://cyqbb4rjw2wqx" path="res://Sprites/Enemies/Knight/Walking/KnightWalking7.png" id="8_b8q5w"]
+[ext_resource type="Texture2D" uid="uid://dp11m14n7i00b" path="res://Sprites/Enemies/Knight/Walking/KnightWalking8.png" id="9_jyedy"]
+[ext_resource type="Texture2D" uid="uid://dk0lk4h6u6ont" path="res://Sprites/Enemies/Knight/Defeated/knightDefeated.png" id="10_bshpu"]
+[ext_resource type="Texture2D" uid="uid://bi8ntvqhpc3n2" path="res://Sprites/Enemies/Knight/Knoocked/KnightKnocked.png" id="13_cfm7y"]
+[ext_resource type="Script" path="res://Scripts/AI/Enemy_Gun.gd" id="13_vj60i"]
+[ext_resource type="PackedScene" uid="uid://48nbm3dcmh6h" path="res://Prefabs/Projectiles/bullet.tscn" id="14_y2jri"]
+[ext_resource type="Texture2D" uid="uid://ce44c76kvl7hm" path="res://Sprites/Guns/Shotgun.png" id="15_p62ku"]
+[ext_resource type="Script" path="res://Scripts/State_Machine.gd" id="16_0ypl7"]
+[ext_resource type="Script" path="res://Scripts/AI/Knight/Wandering.gd" id="17_a7lju"]
+[ext_resource type="Script" path="res://Scripts/AI/Knight/KnightRushing.gd" id="18_uywog"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3738"]
+size = Vector2(43, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xxnn3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vsgcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ev2xu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xk34x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nw7fh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rqgmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tuqgq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_b8q5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jyedy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_bshpu")
+}],
+"loop": true,
+"name": &"defeated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_avd40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_evx75")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_cfm7y")
+}],
+"loop": true,
+"name": &"knocked",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2rh5"]
+size = Vector2(39, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq6sb"]
+size = Vector2(25, 26)
+
+[node name="Knight" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 3
+collision_mask = 19
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_lu870")
+enemy_name = "KNIGHT"
+is_boss = true
+hp = 25
+speed = 64
+damage = 3
+drop = ExtResource("2_6yobf")
+sprite = NodePath("AnimatedSprite2D")
+can_flip = true
+has_multiple_animations = true
+i_time = 0.01
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3.5, -1.5)
+shape = SubResource("RectangleShape2D_i3738")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_xxnn3")
+animation = &"defeated"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, -1)
+shape = SubResource("RectangleShape2D_w2rh5")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+
+[node name="Ref" type="Node2D" parent="."]
+position = Vector2(55, -2)
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Gun" type="Node2D" parent="Pivot"]
+position = Vector2(55, -2)
+script = ExtResource("13_vj60i")
+gun_name = "Shotgun"
+max_ammo = 1
+damage = 3
+bullet_velocity = 50
+reload_time = 5.0
+precision_recover_time = 1.0
+fire_rate = 1.0
+spray = 0.4
+bullet = ExtResource("14_y2jri")
+target_point = Array[Vector2]([Vector2(37, -3), Vector2(37, -4), Vector2(37, -5), Vector2(37, -2), Vector2(37, -1)])
+rotation_delay = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot/Gun"]
+scale = Vector2(2, 2)
+texture = ExtResource("15_p62ku")
+
+[node name="Marker2D" type="Marker2D" parent="Pivot/Gun"]
+position = Vector2(32, -3)
+
+[node name="Target" type="Marker2D" parent="Pivot/Gun"]
+position = Vector2(37, -3)
+
+[node name="Timer" type="Timer" parent="Pivot/Gun"]
+
+[node name="Fire Rate Timer" type="Timer" parent="Pivot/Gun"]
+
+[node name="Area2D" type="Area2D" parent="Pivot/Gun"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Gun/Area2D"]
+position = Vector2(-16.5, 2)
+shape = SubResource("RectangleShape2D_aq6sb")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("16_0ypl7")
+initial_state = NodePath("Wander")
+
+[node name="Wander" type="Node" parent="State Machine" node_paths=PackedStringArray("gun")]
+script = ExtResource("17_a7lju")
+bounds = Vector2(1100, 620)
+gun = NodePath("../../Pivot/Gun")
+
+[node name="Timer" type="Timer" parent="State Machine/Wander"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Rushing" type="Node" parent="State Machine" node_paths=PackedStringArray("gun", "gun_pivot")]
+script = ExtResource("18_uywog")
+gun = NodePath("../../Pivot/Gun")
+gun_pivot = NodePath("../../Pivot")
+
+[node name="Timer" type="Timer" parent="State Machine/Rushing"]
+wait_time = 1.5
+one_shot = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 24.0
+navigation_layers = 3
+avoidance_enabled = true
+radius = 48.0
+
+[connection signal="timeout" from="Pivot/Gun/Timer" to="Pivot/Gun" method="_on_timer_timeout"]
+[connection signal="timeout" from="Pivot/Gun/Fire Rate Timer" to="Pivot/Gun" method="_on_fire_rate_timer_timeout"]
+[connection signal="timeout" from="State Machine/Wander/Timer" to="State Machine/Wander" method="_on_timer_timeout"]
+[connection signal="timeout" from="State Machine/Rushing/Timer" to="State Machine/Rushing" method="_on_timer_timeout"]

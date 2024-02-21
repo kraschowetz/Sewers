@@ -15,6 +15,7 @@ func _ready() -> void:
 		current_state = initial_state
 
 func _process(delta) -> void:
+	if get_node("../..").paused: return
 	if current_state:
 		current_state.update(delta)
 

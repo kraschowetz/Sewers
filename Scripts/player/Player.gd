@@ -37,6 +37,8 @@ func apply_force(duration: float, force: Vector2) -> void:
 	external_velocity = Vector2.ZERO
 
 func _process(_delta) -> void:
+	if world.paused: return
+	
 	if hp == 1 && Input.is_action_just_pressed("space") && cheese > 0:
 		cheese -= 1
 		hp += 1

@@ -1,5 +1,7 @@
-res://Scripts/UI
 res://Prefabs
+res://Prefabs/Bosses
+res://Scripts/AI/Knight
+res://Scripts/UI
 res://Shaders
 res://Scripts/TitleScreen
 res://Sprites/TIles/Water
@@ -15,8 +17,6 @@ res://Prefabs/Items
 res://Sprites/Guns
 res://Prefabs/Projectiles
 res://Scripts/Gun
-res://Prefabs/Bosses
 C:/Users/joaok/OneDrive/Documentos/Sewers/Scripts/TitleScreen
 res://Sprites/UI/Health Icons
 res://Sprites/Upgrades
-res://Prefabs/upgrades
