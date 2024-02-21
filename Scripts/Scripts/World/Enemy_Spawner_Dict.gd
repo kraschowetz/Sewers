@@ -8,6 +8,5 @@ var dict = {
 }
 
 var boss_dict = {
-	"data_1": Enemy_Spawner_Data.new([0], [100], 11),
-	"data_2": Enemy_Spawner_Data.new([1], [100], 255)
+	"data_1": Enemy_Spawner_Data.new([0], [100], 255),
 }

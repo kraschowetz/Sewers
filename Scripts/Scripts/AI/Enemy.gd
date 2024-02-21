@@ -1,19 +1,12 @@
 extends CharacterBody2D
 class_name Enemy
 
-@onready var hp_bar = preload("res://Prefabs/EnemyHealthBar.tscn")
-
 @export_category("stats")
 @export var enemy_name: String #only used in bosses
 @export var is_boss: bool = false
-@export var invincible: bool = false #only used in bosses
 @export var hp: int
 @export var speed: int
 @export var damage: int
-<<<<<<< HEAD
-@export var drop: PackedScene #only used in bosses
-=======
->>>>>>> dfe7f958f27bc9e577c0a56a544b4023497541fd
 
 @export_category("front-end")
 @export var sprite: AnimatedSprite2D
@@ -26,6 +19,7 @@ class_name Enemy
 var is_defeated: bool = false
 var on_mlee_range = false
 var active: bool = false
+var invincible: bool = false
 var max_hp: int
 var player: CharacterBody2D
 var external_velocity: Vector2
@@ -39,17 +33,11 @@ func _ready() -> void:
 	max_hp = hp
 	if sprite:
 		sprite.speed_scale = 1 + randf_range(-.3, .3)
-	if hp > 1 && !is_boss:
-		var h = hp_bar.instantiate()
-		h.position = Vector2(-24, -32)
-		call_deferred("add_child", h)
-		h.set_bar(self)
 	var s = speed
 	speed = 0
 	await  get_tree().create_timer(1.75).timeout
 	active = true
 	speed = s
-		
 
 func apply_external_velocity(dur: float, vel: Vector2) -> void:
 	external_velocity = vel
@@ -57,14 +45,11 @@ func apply_external_velocity(dur: float, vel: Vector2) -> void:
 	external_velocity = Vector2.ZERO
 
 func count_iframes() -> void:
-	if i_time == 0: return
-	
-	await get_tree().process_frame #await til end of frame :)
-	
 	sprite.self_modulate = Color(255, 255, 255, 255)
-	  
-	invincible = true
 	
+	if i_time > 0: 
+		invincible = true
+		
 	await get_tree().create_timer(.1).timeout
 	sprite.self_modulate = Color(1, 1, 1, 1)
 	
@@ -78,7 +63,7 @@ func apply_damage(dmg: int, origin: Vector2, mod: float) -> void:
 	if is_defeated: return
 	if invincible: return
 	
-	hp_changed.emit(hp)
+	if is_boss: hp_changed.emit(hp)
 	
 	#calculate external velocity
 	var direction: Vector2 = (origin - position).normalized()
@@ -90,11 +75,6 @@ func apply_damage(dmg: int, origin: Vector2, mod: float) -> void:
 		is_defeated = true
 		world.unload_after_layer_exit.append(self)
 		sprite.modulate = Color("#818181")
-		if drop:
-			var d = drop.instantiate()
-			d.position = position
-			world.call_deferred("add_child", d)
-			world.unload_after_layer_exit.append(d)
 		return
 	
 	count_iframes()

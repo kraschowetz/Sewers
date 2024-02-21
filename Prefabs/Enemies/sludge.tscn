@@ -84,8 +84,8 @@ shape = SubResource("RectangleShape2D_i3738")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5cjbo")
-animation = &"defeated"
 autoplay = "default"
+frame_progress = 0.887693
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
