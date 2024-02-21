@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=111 format=3 uid="uid://3yq4u4ogy3lj"]
-=======
-[gd_scene load_steps=109 format=3 uid="uid://3yq4u4ogy3lj"]
->>>>>>> dfe7f958f27bc9e577c0a56a544b4023497541fd
 
 [ext_resource type="Script" path="res://Scripts/State_Machine.gd" id="1_8fc2n"]
 [ext_resource type="Script" path="res://Scripts/World/World.gd" id="1_bg4lh"]
@@ -78,13 +74,8 @@
 [ext_resource type="PackedScene" uid="uid://k3ox8vfrwpor" path="res://Prefabs/Bosses/GreatSludge.tscn" id="56_g282s"]
 [ext_resource type="PackedScene" uid="uid://dlerpvag6rqlq" path="res://Prefabs/Enemies/CatMachineGun.tscn" id="66_o471x"]
 [ext_resource type="Script" path="res://Scripts/UI/ReloadLabel.gd" id="68_otkeq"]
-<<<<<<< HEAD
 [ext_resource type="Script" path="res://Scripts/UI/BossHealth.gd" id="69_qotwk"]
 [ext_resource type="Script" path="res://Scripts/UI/PausedScreen.gd" id="70_omvb8"]
-=======
-[ext_resource type="Script" path="res://Scripts/UI/BossHealth.gd" id="69_dd44a"]
-[ext_resource type="Script" path="res://Scripts/UI/PausedScreen.gd" id="70_qx7l0"]
->>>>>>> dfe7f958f27bc9e577c0a56a544b4023497541fd
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbyu8"]
 size = Vector2(12, 9.20001)
@@ -261,13 +252,9 @@ shader_parameter/shine_color = Vector4(1, 0, 0, 1)
 shader_parameter/shine_speed = 0.0
 shader_parameter/shine_size = 10.0
 
-<<<<<<< HEAD
 [sub_resource type="CanvasTexture" id="CanvasTexture_u2bj4"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wnknm"]
-=======
-[sub_resource type="CanvasTexture" id="CanvasTexture_tk6pv"]
->>>>>>> dfe7f958f27bc9e577c0a56a544b4023497541fd
 
 [sub_resource type="Shader" id="Shader_qxj1p"]
 code = "shader_type canvas_item;
@@ -321,11 +308,7 @@ void fragment() {
 
 */"
 
-<<<<<<< HEAD
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_in5wh"]
-=======
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bw14g"]
->>>>>>> dfe7f958f27bc9e577c0a56a544b4023497541fd
 shader = SubResource("Shader_qxj1p")
 shader_parameter/intensity = 3.0
 shader_parameter/wiggle_time = 0.5
@@ -644,7 +627,6 @@ path = "res://Maps/Map_6.png"
 enemy_list = Array[PackedScene]([ExtResource("2_ga5hr"), ExtResource("2_yc2cr"), ExtResource("55_5gtdp"), ExtResource("66_o471x")])
 boss_list = Array[PackedScene]([ExtResource("56_g282s"), ExtResource("12_7xljv")])
 enemy_spawner_dictionary = NodePath("Enemy Spawner Dictionary")
-layer = 5
 
 [node name="Enemy Spawner Dictionary" type="Node" parent="."]
 script = ExtResource("4_p0nul")
@@ -657,9 +639,11 @@ position = Vector2(360, 408)
 collision_mask = 17
 script = ExtResource("1_cuyx8")
 reload_bar = NodePath("TextureRect")
-cheese = 99
+cheese = null
 i_time = 0.5
 bullet = ExtResource("37_ktjwf")
+knockback_mod = null
+godmode = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(1, 8.5)
@@ -932,11 +916,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-<<<<<<< HEAD
 script = ExtResource("69_qotwk")
-=======
-script = ExtResource("69_dd44a")
->>>>>>> dfe7f958f27bc9e577c0a56a544b4023497541fd
 max_hp = 100
 
 [node name="Bar" type="TextureRect" parent="UI/BossHealth"]
@@ -947,11 +927,7 @@ offset_left = 65.0
 offset_top = 600.0
 offset_right = 1065.0
 offset_bottom = 616.0
-<<<<<<< HEAD
 texture = SubResource("CanvasTexture_u2bj4")
-=======
-texture = SubResource("CanvasTexture_tk6pv")
->>>>>>> dfe7f958f27bc9e577c0a56a544b4023497541fd
 expand_mode = 1
 
 [node name="TweenBar" type="TextureRect" parent="UI/BossHealth"]
@@ -962,11 +938,7 @@ offset_left = 65.0
 offset_top = 600.0
 offset_right = 1065.0
 offset_bottom = 616.0
-<<<<<<< HEAD
 texture = SubResource("CanvasTexture_u2bj4")
-=======
-texture = SubResource("CanvasTexture_tk6pv")
->>>>>>> dfe7f958f27bc9e577c0a56a544b4023497541fd
 expand_mode = 1
 
 [node name="BossLabel" type="Label" parent="UI/BossHealth"]
@@ -988,27 +960,16 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 40.0
-<<<<<<< HEAD
 script = ExtResource("70_omvb8")
-=======
-script = ExtResource("70_qx7l0")
->>>>>>> dfe7f958f27bc9e577c0a56a544b4023497541fd
 
 [node name="DarkLayer" type="Sprite2D" parent="UI/PausedScreen"]
 self_modulate = Color(0, 0, 0, 0.603922)
 position = Vector2(576.75, 299)
 scale = Vector2(1154.5, 700)
-<<<<<<< HEAD
 texture = SubResource("CanvasTexture_wnknm")
 
 [node name="Label" type="Label" parent="UI/PausedScreen"]
 material = SubResource("ShaderMaterial_in5wh")
-=======
-texture = SubResource("CanvasTexture_ag5am")
-
-[node name="Label" type="Label" parent="UI/PausedScreen"]
-material = SubResource("ShaderMaterial_bw14g")
->>>>>>> dfe7f958f27bc9e577c0a56a544b4023497541fd
 layout_mode = 0
 offset_right = 1155.0
 offset_bottom = 48.0

@@ -10,10 +10,7 @@ class_name Enemy
 @export var hp: int
 @export var speed: int
 @export var damage: int
-<<<<<<< HEAD
 @export var drop: PackedScene #only used in bosses
-=======
->>>>>>> dfe7f958f27bc9e577c0a56a544b4023497541fd
 
 @export_category("front-end")
 @export var sprite: AnimatedSprite2D

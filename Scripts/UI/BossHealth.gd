@@ -19,18 +19,12 @@ func set_bar(boss: Enemy) -> void:
 	label.text = boss.enemy_name
 	boss.hp_changed.connect(update_hp)
 	
-<<<<<<< HEAD
 	bar.size.x = 1000
 	tweenBar.size.x = 1000
 	
 	current_hp = max_hp
 	max_size = bar.size.x
 	update_hp(max_hp)
-=======
-	current_hp = max_hp
-	max_size = bar.size.x
-	update_hp(current_hp)
->>>>>>> dfe7f958f27bc9e577c0a56a544b4023497541fd
 
 func update_hp(new_hp: int) -> void:
 	var tween = get_tree().create_tween()
