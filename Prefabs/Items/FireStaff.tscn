@@ -13,8 +13,7 @@ position = Vector2(540, 405)
 gravity_scale = 0.0
 script = ExtResource("1_htym3")
 gun_name = "FireStaff"
-max_ammo = 2
-precision = 1
+max_ammo = 4
 damage = 2
 bullet_velocity = 60
 bullet_force = 3.0
@@ -29,12 +28,12 @@ bullet_origin_vector = Vector2(17, -3)
 target_point = Array[Vector2]([Vector2(22, -3)])
 spr = ExtResource("3_2kaeh")
 item_desc = ExtResource("4_58xk7")
-desc = "[color=yellow]HANDGUN[/color]
+desc = "[color=orange]Fire Staff[/color]
 
-DMG: [color=red]LOW[/color]
+DMG: [color=green]high[/color]
 RELOAD TIME: [color=green]FAST[/color]
 
-\"good for starting your journey\""
+\"fireball!\""
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2.5, 2.5)
