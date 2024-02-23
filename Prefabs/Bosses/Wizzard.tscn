@@ -1,0 +1,176 @@
+[gd_scene load_steps=23 format=3 uid="uid://brbfnl1lm13te"]
+
+[ext_resource type="Script" path="res://Scripts/AI/Enemy.gd" id="1_nc742"]
+[ext_resource type="Texture2D" uid="uid://cfam84qexgy8u" path="res://Sprites/Enemies/Cat/Cat1.png" id="2_047q8"]
+[ext_resource type="PackedScene" uid="uid://rpq8chx2ox4y" path="res://Prefabs/Items/FireStaff.tscn" id="2_gu8mx"]
+[ext_resource type="Texture2D" uid="uid://dsvywg5lcqesx" path="res://Sprites/Enemies/Cat/Cat2.png" id="3_8h5si"]
+[ext_resource type="Texture2D" uid="uid://c2pgej48qy00l" path="res://Sprites/Enemies/Cat/Cat3.png" id="4_5yuqo"]
+[ext_resource type="Texture2D" uid="uid://cai1gv16a2uyx" path="res://Sprites/Enemies/Cat/Cat4.png" id="5_x2qew"]
+[ext_resource type="Texture2D" uid="uid://drm8vytqarr15" path="res://Sprites/Enemies/Cat/Cat5.png" id="6_o2hfa"]
+[ext_resource type="Texture2D" uid="uid://byrljk4do70ig" path="res://Sprites/Enemies/Cat/Cat6.png" id="7_v8qci"]
+[ext_resource type="Texture2D" uid="uid://cnt8ycr1v3i16" path="res://Sprites/Enemies/Cat/Cat7.png" id="8_uiygk"]
+[ext_resource type="Texture2D" uid="uid://6yojjpbp1axd" path="res://Sprites/Enemies/Cat/Cat8.png" id="9_8r457"]
+[ext_resource type="Texture2D" uid="uid://bq7upejbvr7u" path="res://Sprites/Enemies/Cat/Defeated/CatDefeated.png" id="10_kwdds"]
+[ext_resource type="Texture2D" uid="uid://dw0p7f2n7tms5" path="res://Sprites/Enemies/Cat/Idle/Cat Idle1.png" id="11_wqafr"]
+[ext_resource type="Texture2D" uid="uid://d3a660oa3sx2w" path="res://Sprites/Enemies/Cat/Idle/Cat Idle2.png" id="12_3tj6n"]
+[ext_resource type="Script" path="res://Scripts/AI/Enemy_Gun.gd" id="13_dfqrr"]
+[ext_resource type="PackedScene" uid="uid://bpjnhgx85t0ys" path="res://Prefabs/Projectiles/Fireball.tscn" id="14_fw0f8"]
+[ext_resource type="Texture2D" uid="uid://8v2n5x7kgj08" path="res://Sprites/Guns/FireStaff.png" id="15_trpwg"]
+[ext_resource type="Script" path="res://Scripts/State_Machine.gd" id="16_px65a"]
+[ext_resource type="Script" path="res://Scripts/AI/Wizzard/Phase1.gd" id="17_q0qwe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3738"]
+size = Vector2(43, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xxnn3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_047q8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8h5si")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5yuqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x2qew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o2hfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_v8qci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uiygk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8r457")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_kwdds")
+}],
+"loop": true,
+"name": &"defeated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_wqafr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_3tj6n")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2rh5"]
+size = Vector2(39, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq6sb"]
+size = Vector2(25, 26)
+
+[node name="Wizzard" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 3
+collision_mask = 19
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_nc742")
+hp = 40
+speed = 64
+damage = 1
+drop = ExtResource("2_gu8mx")
+sprite = NodePath("AnimatedSprite2D")
+can_flip = true
+has_multiple_animations = true
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3.5, -1.5)
+shape = SubResource("RectangleShape2D_i3738")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_xxnn3")
+animation = &"defeated"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, -1)
+shape = SubResource("RectangleShape2D_w2rh5")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+
+[node name="Ref" type="Node2D" parent="."]
+position = Vector2(55, -2)
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Gun" type="Node2D" parent="Pivot"]
+position = Vector2(55, -2)
+script = ExtResource("13_dfqrr")
+gun_name = "Wnad"
+max_ammo = 10
+damage = 1
+bullet_velocity = 55
+reload_time = 0.1
+precision_recover_time = 1.0
+fire_rate = 1.1
+spray = 0.4
+bullet = ExtResource("14_fw0f8")
+target_point = Array[Vector2]([Vector2(26, -6)])
+rotation_delay = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot/Gun"]
+scale = Vector2(2, 2)
+texture = ExtResource("15_trpwg")
+
+[node name="Marker2D" type="Marker2D" parent="Pivot/Gun"]
+position = Vector2(15, -5)
+
+[node name="Target" type="Marker2D" parent="Pivot/Gun"]
+position = Vector2(17, -5)
+
+[node name="Timer" type="Timer" parent="Pivot/Gun"]
+
+[node name="Fire Rate Timer" type="Timer" parent="Pivot/Gun"]
+wait_time = 0.1
+
+[node name="Area2D" type="Area2D" parent="Pivot/Gun"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Gun/Area2D"]
+position = Vector2(-16.5, 2)
+shape = SubResource("RectangleShape2D_aq6sb")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("16_px65a")
+initial_state = NodePath("Phase1")
+
+[node name="Phase1" type="Node" parent="State Machine"]
+script = ExtResource("17_q0qwe")
+
+[node name="Timer" type="Timer" parent="State Machine/Phase1"]
+
+[node name="RepositionTimer" type="Timer" parent="State Machine/Phase1"]
+wait_time = 15.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 48.0
+
+[connection signal="timeout" from="Pivot/Gun/Timer" to="Pivot/Gun" method="_on_timer_timeout"]
+[connection signal="timeout" from="Pivot/Gun/Fire Rate Timer" to="Pivot/Gun" method="_on_fire_rate_timer_timeout"]
+[connection signal="timeout" from="State Machine/Phase1/Timer" to="State Machine/Phase1" method="_on_timer_timeout"]
+[connection signal="timeout" from="State Machine/Phase1/RepositionTimer" to="State Machine/Phase1" method="_on_reposition_timer_timeout"]

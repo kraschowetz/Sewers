@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://of75ofy0rhaw"]
+
+[ext_resource type="Texture2D" uid="uid://cjdpr3rfngn77" path="res://Sprites/Particles/FireParticle.png" id="1_o8ui2"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ikrf"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+spread = 75.0
+initial_velocity_min = 256.0
+initial_velocity_max = 256.0
+angular_velocity_min = 84.33
+angular_velocity_max = 583.79
+gravity = Vector3(0, 0, 0)
+
+[node name="ParryParticle" type="GPUParticles2D"]
+z_index = 10
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_7ikrf")
+texture = ExtResource("1_o8ui2")
+lifetime = 0.33
+one_shot = true
+explosiveness = 1.0

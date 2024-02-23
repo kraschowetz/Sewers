@@ -36,6 +36,7 @@ class_name Gun
 @export var bar: TextureRect
 @export var item_desc: PackedScene
 @export_multiline var desc: String
+@export var shoot_particle: PackedScene
 
 signal mlee_damage(dmg: int, origin: Vector2, mod: float)
 
@@ -166,6 +167,14 @@ func on_shoot() -> void:
 			bullet_target_point.position = p
 		
 		world.add_child(instance)
+	
+	#instancia particula de tiro, se houver
+	if shoot_particle:
+		var particle = shoot_particle.instantiate()
+		particle.position = origin_point.global_position
+		particle.look_at(bullet_target_point.global_position)
+		world.call_deferred("add_child", particle)
+		particle.emitting = true
 	
 	#resetar a posição do alvo
 	bullet_target_point.position = target_point[0]
