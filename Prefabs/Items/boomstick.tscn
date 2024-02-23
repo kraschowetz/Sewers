@@ -29,7 +29,7 @@ spr = ExtResource("2_khevy")
 item_desc = ExtResource("3_ek024")
 desc = "[color=yellow]BOOMSTICK[/color]
 
-DMG: [color=green]HIGH[/damage]
+DMG: [color=green]HIGH[/color]
 RELOAD TIME: [color=red]slow[/color]
 
 \"totaly not a terraria rreference\""

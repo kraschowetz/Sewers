@@ -1,4 +1,8 @@
+res://Prefabs/Items
 res://Prefabs
+res://Scripts/AI/Cowboy
+res://Scripts/Gun
+res://Scripts/Upgrades
 res://Prefabs/Bosses
 res://Scripts/AI/Knight
 res://Scripts/UI
@@ -12,11 +16,7 @@ C:/Users/joaok/OneDrive/Documentos/Sewers
 C:/Users/joaok/OneDrive/Documentos/Sewers/Exports
 res://Scenes
 res://Prefabs/Enemies
-res://Scripts/Upgrades
-res://Prefabs/Items
 res://Sprites/Guns
 res://Prefabs/Projectiles
-res://Scripts/Gun
 C:/Users/joaok/OneDrive/Documentos/Sewers/Scripts/TitleScreen
 res://Sprites/UI/Health Icons
-res://Sprites/Upgrades

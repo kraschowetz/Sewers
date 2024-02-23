@@ -1,9 +1,10 @@
 extends RigidBody2D
 class_name Bullet
 
-@onready var parry_particle: PackedScene = preload("res://Prefabs/Particles/ParryParticle.tscn")
+@export var parry_particle: PackedScene = preload("res://Prefabs/Particles/ParryParticle.tscn")
 
 @export var explosion: PackedScene
+@export var phases_enemies: bool
 
 var dmg: int
 var target: Vector2
@@ -17,7 +18,7 @@ func _ready() -> void:
 	var angle = rotation
 	apply_central_force(Vector2(cos(angle), sin(angle)) * vel * 1000)
 	
-	clear()
+	#clear()
 
 func clear() -> void:
 	await get_tree().create_timer(2).timeout
@@ -41,7 +42,8 @@ func _on_bullet_area_2d_body_entered(body) -> void:
 			body.apply_damage(dmg, origin, mod)
 	else:
 		emit_parry_particle()
-	queue_free()
+	if !phases_enemies || body.get_class() != "CharacterBody2D":
+		queue_free()
 
 func emit_parry_particle() -> void:
 	var n = parry_particle.instantiate()

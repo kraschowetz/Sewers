@@ -7,7 +7,7 @@
 script = ExtResource("1_1vqhv")
 price = 3
 texture = ExtResource("2_ynt03")
-upgrade_name = "exploding bullets"
+upgrade_name = "reloading throw"
 upgrade_desc = "[color=yellow]RELOADING THROW[/color]
 
 reload your bullets if you kill an enemy by throwing your weapon  "

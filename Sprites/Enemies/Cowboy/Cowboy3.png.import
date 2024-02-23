@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crdfxun5padhv"
-path="res://.godot/imported/bullet.png-7f53078f001cb38ee131c7b0c67c9c33.ctex"
+uid="uid://dbk2p050p43tk"
+path="res://.godot/imported/Cowboy3.png-1e440d4ebb3096f6bc8e7cabb9f80f46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Guns/bullet.png"
-dest_files=["res://.godot/imported/bullet.png-7f53078f001cb38ee131c7b0c67c9c33.ctex"]
+source_file="res://Sprites/Enemies/Cowboy/Cowboy3.png"
+dest_files=["res://.godot/imported/Cowboy3.png-1e440d4ebb3096f6bc8e7cabb9f80f46.ctex"]
 
 [params]
 

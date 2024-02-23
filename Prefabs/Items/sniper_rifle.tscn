@@ -17,6 +17,7 @@ damage = 3
 bullet_velocity = 90
 bullet_force = 5.0
 reload_time = 2.0
+precision_recover_time = 0.01
 fire_rate = 0.75
 knockback = 0.9
 position_offset = Vector2(48, 0)

@@ -73,7 +73,9 @@ func _ready() -> void:
 	
 
 func _process(delta) -> void:
-	if player: return
+	if player: 
+		reload_timer.paused = world.paused
+		return
 	if sleeping: return
 	sprite.rotation -= 360 * delta
 

@@ -1,0 +1,73 @@
+[gd_scene load_steps=13 format=3 uid="uid://bpjnhgx85t0ys"]
+
+[ext_resource type="Script" path="res://Scripts/Projectiles/Bullet.gd" id="1_8dcmc"]
+[ext_resource type="PackedScene" uid="uid://b6dfn57qs7d5r" path="res://Prefabs/Projectiles/Explosion.tscn" id="2_i8056"]
+[ext_resource type="Texture2D" uid="uid://cx2ogls04v48f" path="res://Sprites/Projectiles/Fireball/Fireball1.png" id="3_auu5e"]
+[ext_resource type="Texture2D" uid="uid://dj4hc686t1ueh" path="res://Sprites/Projectiles/Fireball/Fireball2.png" id="4_trkjk"]
+[ext_resource type="Texture2D" uid="uid://dldppwfps3smm" path="res://Sprites/Projectiles/Fireball/Fireball3.png" id="5_u48no"]
+[ext_resource type="Texture2D" uid="uid://unaqr0jiylnj" path="res://Sprites/Projectiles/Fireball/Fireball4.png" id="6_4rj5y"]
+[ext_resource type="Texture2D" uid="uid://cgbo4wkysgpkg" path="res://Sprites/Projectiles/Fireball/Fireball5.png" id="7_4o1qp"]
+[ext_resource type="Texture2D" uid="uid://yr6i1ut4e223" path="res://Sprites/Projectiles/Fireball/Fireball6.png" id="8_6cufl"]
+[ext_resource type="Texture2D" uid="uid://qgn0g4ylsb3g" path="res://Sprites/Projectiles/Fireball/Fireball7.png" id="9_ifuee"]
+[ext_resource type="Texture2D" uid="uid://dyodrp2v1hl56" path="res://Sprites/Projectiles/Fireball/Fireball8.png" id="10_htq3q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_72a21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_auu5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_trkjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_u48no")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4rj5y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4o1qp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6cufl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ifuee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_htq3q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dkjee"]
+radius = 23.0054
+
+[node name="Bullet" type="RigidBody2D"]
+position = Vector2(610, 388)
+gravity_scale = 0.0
+script = ExtResource("1_8dcmc")
+explosion = ExtResource("2_i8056")
+phases_enemies = true
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+rotation = 1.5708
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_72a21")
+autoplay = "default"
+frame_progress = 0.578134
+
+[node name="BulletArea2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletArea2D"]
+position = Vector2(0, -1.5)
+shape = SubResource("CircleShape2D_dkjee")
+
+[connection signal="body_entered" from="BulletArea2D" to="." method="_on_bullet_area_2d_body_entered"]

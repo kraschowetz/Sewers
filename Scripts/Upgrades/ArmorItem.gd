@@ -20,6 +20,7 @@ func _on_area_2d_body_entered(body) -> void:
 	
 	player.hp = 3
 	player.cheese -= price
+	player.cheese_changed.emit()
 	player.hp_changed.emit()
 	
 	for i  in world.unload_after_layer_exit.size():

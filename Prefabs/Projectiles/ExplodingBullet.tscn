@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Projectiles/Bullet.gd" id="1_qesix"]
 [ext_resource type="PackedScene" uid="uid://b6dfn57qs7d5r" path="res://Prefabs/Projectiles/Explosion.tscn" id="2_a5qle"]
-[ext_resource type="Texture2D" uid="uid://bhjpyli7v8amg" path="res://Sprites/Guns/ExplodingBullet.png" id="3_0c85x"]
+[ext_resource type="Texture2D" uid="uid://bhjpyli7v8amg" path="res://Sprites/Projectiles/ExplodingBullet.png" id="3_0c85x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_25mw4"]
 size = Vector2(22, 10)

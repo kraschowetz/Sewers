@@ -7,6 +7,9 @@ var max_health: int
 var health: int 
 
 func set_bar(e: Enemy) -> void:
+	bar.size.x = 48
+	tween_bar.size.x = 48
+	
 	max_health = e.hp
 	health = max_health
 	bar.size.x = health * (48 / max_health)

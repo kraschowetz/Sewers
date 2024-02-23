@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://k3ox8vfrwpor"]
+[gd_scene load_steps=18 format=3 uid="uid://k3ox8vfrwpor"]
 
 [ext_resource type="Script" path="res://Scripts/AI/Enemy.gd" id="1_cr2fm"]
+[ext_resource type="PackedScene" uid="uid://e643x8olynw8" path="res://Prefabs/Items/cheese.tscn" id="2_bghe6"]
 [ext_resource type="Texture2D" uid="uid://bnhwcsjrcfvk2" path="res://Sprites/Enemies/Slime/Slime1.png" id="2_hjgq3"]
 [ext_resource type="Texture2D" uid="uid://cxbnuuubhbrw3" path="res://Sprites/Enemies/Slime/Slime2.png" id="3_7qiyo"]
 [ext_resource type="Texture2D" uid="uid://bm35w1vdmduj6" path="res://Sprites/Enemies/Slime/Slime3.png" id="4_3cpg2"]
@@ -73,6 +74,7 @@ is_boss = true
 hp = 10
 speed = 90
 damage = 1
+drop = ExtResource("2_bghe6")
 sprite = NodePath("AnimatedSprite2D")
 metadata/_edit_group_ = true
 

@@ -52,13 +52,14 @@ func update_tileset() -> void:
 	sub_map.tile_set = tile_sets[i]
 	water.texture = water_textures[i]
 
-func _input(_event):
+func _unhandled_input(_event) -> void:
 	if generating_world: return
 	if !Input.is_action_just_pressed("Esc"): return
 	
 	state_changed.emit()
 	paused = !paused
 	$UI/LayerLabel.visible = !paused
+	get_tree().paused = paused
 
 func on_enemy_defeated(pos: Vector2) -> void:
 	enemy_count -= 1
@@ -254,6 +255,7 @@ func transition() -> void:
 	sub_map.clear()
 	
 	layer += 1
+	
 	path = generate_stage()
 	update_enemy_list()
 	

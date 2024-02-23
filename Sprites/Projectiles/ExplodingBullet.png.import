@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhjpyli7v8amg"
-path="res://.godot/imported/ExplodingBullet.png-057b4a263f789575450c8712a897e38f.ctex"
+path="res://.godot/imported/ExplodingBullet.png-d6dcec9b8460a9a707a8614afef8e6d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Guns/ExplodingBullet.png"
-dest_files=["res://.godot/imported/ExplodingBullet.png-057b4a263f789575450c8712a897e38f.ctex"]
+source_file="res://Sprites/Projectiles/ExplodingBullet.png"
+dest_files=["res://.godot/imported/ExplodingBullet.png-d6dcec9b8460a9a707a8614afef8e6d1.ctex"]
 
 [params]
 
