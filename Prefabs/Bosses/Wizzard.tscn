@@ -1,18 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://brbfnl1lm13te"]
+[gd_scene load_steps=17 format=3 uid="uid://brbfnl1lm13te"]
 
 [ext_resource type="Script" path="res://Scripts/AI/Enemy.gd" id="1_nc742"]
-[ext_resource type="Texture2D" uid="uid://cfam84qexgy8u" path="res://Sprites/Enemies/Cat/Cat1.png" id="2_047q8"]
 [ext_resource type="PackedScene" uid="uid://rpq8chx2ox4y" path="res://Prefabs/Items/FireStaff.tscn" id="2_gu8mx"]
-[ext_resource type="Texture2D" uid="uid://dsvywg5lcqesx" path="res://Sprites/Enemies/Cat/Cat2.png" id="3_8h5si"]
-[ext_resource type="Texture2D" uid="uid://c2pgej48qy00l" path="res://Sprites/Enemies/Cat/Cat3.png" id="4_5yuqo"]
-[ext_resource type="Texture2D" uid="uid://cai1gv16a2uyx" path="res://Sprites/Enemies/Cat/Cat4.png" id="5_x2qew"]
-[ext_resource type="Texture2D" uid="uid://drm8vytqarr15" path="res://Sprites/Enemies/Cat/Cat5.png" id="6_o2hfa"]
-[ext_resource type="Texture2D" uid="uid://byrljk4do70ig" path="res://Sprites/Enemies/Cat/Cat6.png" id="7_v8qci"]
-[ext_resource type="Texture2D" uid="uid://cnt8ycr1v3i16" path="res://Sprites/Enemies/Cat/Cat7.png" id="8_uiygk"]
-[ext_resource type="Texture2D" uid="uid://6yojjpbp1axd" path="res://Sprites/Enemies/Cat/Cat8.png" id="9_8r457"]
-[ext_resource type="Texture2D" uid="uid://bq7upejbvr7u" path="res://Sprites/Enemies/Cat/Defeated/CatDefeated.png" id="10_kwdds"]
-[ext_resource type="Texture2D" uid="uid://dw0p7f2n7tms5" path="res://Sprites/Enemies/Cat/Idle/Cat Idle1.png" id="11_wqafr"]
-[ext_resource type="Texture2D" uid="uid://d3a660oa3sx2w" path="res://Sprites/Enemies/Cat/Idle/Cat Idle2.png" id="12_3tj6n"]
+[ext_resource type="Texture2D" uid="uid://b06c53ej341pt" path="res://Sprites/Enemies/Wizzard/Wizzard1.png" id="3_s4asu"]
+[ext_resource type="Texture2D" uid="uid://b4a1c6g3kqv20" path="res://Sprites/Enemies/Wizzard/Wizzard2.png" id="4_kfqca"]
+[ext_resource type="Texture2D" uid="uid://cpvikyje72ogx" path="res://Sprites/Enemies/Wizzard/WizzardDefeated.png" id="4_qaont"]
+[ext_resource type="Script" path="res://Scripts/AI/Wizzard/Phase2.gd" id="11_llxs1"]
+[ext_resource type="PackedScene" uid="uid://dd1lyhhog3lw4" path="res://Prefabs/Projectiles/FireWall.tscn" id="12_csv5y"]
 [ext_resource type="Script" path="res://Scripts/AI/Enemy_Gun.gd" id="13_dfqrr"]
 [ext_resource type="PackedScene" uid="uid://bpjnhgx85t0ys" path="res://Prefabs/Projectiles/Fireball.tscn" id="14_fw0f8"]
 [ext_resource type="Texture2D" uid="uid://8v2n5x7kgj08" path="res://Sprites/Guns/FireStaff.png" id="15_trpwg"]
@@ -26,36 +20,18 @@ size = Vector2(43, 49)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_047q8")
+"texture": ExtResource("3_s4asu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_8h5si")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_5yuqo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_x2qew")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_o2hfa")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_v8qci")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_uiygk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_8r457")
+"texture": ExtResource("4_kfqca")
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_kwdds")
+"texture": ExtResource("4_qaont")
 }],
 "loop": true,
 "name": &"defeated",
@@ -63,10 +39,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_wqafr")
+"texture": ExtResource("3_s4asu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_3tj6n")
+"texture": ExtResource("4_kfqca")
 }],
 "loop": true,
 "name": &"idle",
@@ -85,6 +61,9 @@ collision_mask = 19
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_nc742")
+enemy_name = "Wizzard"
+is_boss = true
+dmg_limit = 1
 hp = 40
 speed = 64
 damage = 1
@@ -92,6 +71,7 @@ drop = ExtResource("2_gu8mx")
 sprite = NodePath("AnimatedSprite2D")
 can_flip = true
 has_multiple_animations = true
+i_time = 0.2
 metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -103,8 +83,8 @@ shape = SubResource("RectangleShape2D_i3738")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_xxnn3")
-animation = &"defeated"
 autoplay = "default"
+frame_progress = 0.128179
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, -1)
@@ -164,7 +144,24 @@ script = ExtResource("17_q0qwe")
 [node name="Timer" type="Timer" parent="State Machine/Phase1"]
 
 [node name="RepositionTimer" type="Timer" parent="State Machine/Phase1"]
-wait_time = 15.0
+wait_time = 10.0
+
+[node name="ReposOpeningTimer" type="Timer" parent="State Machine/Phase1"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Phase2" type="Node" parent="State Machine"]
+script = ExtResource("11_llxs1")
+wall = ExtResource("12_csv5y")
+
+[node name="InitTimer" type="Timer" parent="State Machine/Phase2"]
+
+[node name="WallSpawnTimer" type="Timer" parent="State Machine/Phase2"]
+autostart = true
+
+[node name="OpeningTimer" type="Timer" parent="State Machine/Phase2"]
+wait_time = 5.0
+one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
@@ -174,3 +171,7 @@ radius = 48.0
 [connection signal="timeout" from="Pivot/Gun/Fire Rate Timer" to="Pivot/Gun" method="_on_fire_rate_timer_timeout"]
 [connection signal="timeout" from="State Machine/Phase1/Timer" to="State Machine/Phase1" method="_on_timer_timeout"]
 [connection signal="timeout" from="State Machine/Phase1/RepositionTimer" to="State Machine/Phase1" method="_on_reposition_timer_timeout"]
+[connection signal="timeout" from="State Machine/Phase1/ReposOpeningTimer" to="State Machine/Phase1" method="_on_repos_opening_timer_timeout"]
+[connection signal="timeout" from="State Machine/Phase2/InitTimer" to="State Machine/Phase2" method="_on_init_timer_timeout"]
+[connection signal="timeout" from="State Machine/Phase2/WallSpawnTimer" to="State Machine/Phase2" method="_on_wall_spawn_timer_timeout"]
+[connection signal="timeout" from="State Machine/Phase2/OpeningTimer" to="State Machine/Phase2" method="_on_opening_timer_timeout"]

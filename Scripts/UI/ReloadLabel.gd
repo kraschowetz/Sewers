@@ -16,6 +16,7 @@ func on_ammo_changed() -> void:
 	self_modulate = Color(1, 1, 1, 1)
 	if !player.armed:
 		visible = false
+		return
 	
 	if player.gun.ammo > 0:
 		visible = false

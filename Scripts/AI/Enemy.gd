@@ -7,6 +7,7 @@ class_name Enemy
 @export var enemy_name: String #only used in bosses
 @export var is_boss: bool = false
 @export var invincible: bool = false #only used in bosses
+@export var dmg_limit: int = 0
 @export var hp: int
 @export var speed: int
 @export var damage: int
@@ -71,7 +72,10 @@ func count_iframes() -> void:
 	invincible = false
 
 func apply_damage(dmg: int, origin: Vector2, mod: float) -> void:
+	
+	if dmg > dmg_limit && dmg_limit > 0: dmg = dmg_limit
 	hp -= dmg
+	
 	if is_defeated: return
 	if invincible: return
 	

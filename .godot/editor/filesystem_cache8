@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1708721324
+::res://::1708956420
 export_presets.cfg::TextFile::-1::1707836489::0::1::::<><>::
 Godot.svg::CompressedTexture2D::7640914112863173003::1703891132::1707147957::1::::<><>::
 Icon.png::CompressedTexture2D::5475679549079937547::1707605772::1707605783::1::::<><>::
@@ -12,7 +12,7 @@ plugin.cfg::TextFile::-1::1707309836::0::1::::<><>::
 THIRDPARTY.md::TextFile::-1::1707309836::0::1::::<><>::
 ::res://addons/godot-git-plugin/linux/::1707309836
 ::res://addons/godot-git-plugin/macos/::1707309836
-::res://addons/godot-git-plugin/win64/::1708721318
+::res://addons/godot-git-plugin/win64/::1708956413
 ::res://addons/nv.file_system/::1708709114
 nv.file_system.gd::GDScript::-1::1708709114::0::1::::<>EditorPlugin<>::
 plugin.cfg::TextFile::-1::1708709114::0::1::::<><>::
@@ -32,20 +32,21 @@ EnemyHealthBar.tscn::PackedScene::6855895649238441131::1708719322::0::1::::<><>:
 itemDesc.tscn::PackedScene::7251589217225851648::1708171752::0::1::::<><>::res://Scripts/UI/ItemDesc.gd
 Shopkeeper.tscn::PackedScene::9013993076017117854::1708535502::0::1::::<><>::res://Scripts/Npcs/Shopkeeper.gd<>uid://bx43f2kmtvbbh::::res://Prefabs/Items/handgun.tscn<>uid://r4pk0avtlbr7::::res://Prefabs/Items/boomstick.tscn<>uid://fqkx04b63cnt::::res://Prefabs/Items/machine_gun.tscn<>uid://uc8l7bar8ou1::::res://Prefabs/Items/smg.tscn<>uid://dr553ybphxmdk::::res://Prefabs/Items/Armor.tscn<>uid://b3v53a147fadd::::res://Prefabs/Items/sniper_rifle.tscn<>uid://dcqjv7b12ceaa::::res://Prefabs/upgrades/Up_explodingbullets.tscn<>uid://c6t4yhsjkgcad::::res://Prefabs/Items/UpgradeItem.tscn<>uid://cdi0skxq7g576::::res://Prefabs/upgrades/up_luck.tscn<>uid://cofhad54al2f2::::res://Sprites/Shopkeeper/Shopkeeper.png<>uid://d0xowi4hmvljc::::res://Prefabs/upgrades/Up_reloadingThrow.tscn
 spikes.tscn::PackedScene::787255655086539260::1707745459::0::1::::<><>::res://Scripts/World/Spikes.gd<>uid://cynsx2ycx0hdb::::res://Sprites/TIles/Spikes/Spikes1.png<>uid://hxddq8gir1ta::::res://Sprites/TIles/Spikes/Spikes2.png
-::res://Prefabs/Bosses/::1708656865
+::res://Prefabs/Bosses/::1708798773
 cowboy.tscn::PackedScene::3690070730386974886::1708656865::0::1::::<><>::res://Scripts/AI/Enemy.gd<>uid://wrgs2h3idwow::::res://Prefabs/Items/revolver.tscn<>uid://dpx1o82ntlaum::::res://Sprites/Enemies/Cowboy/Cowboy1.png<>uid://c6rpy34e0firb::::res://Sprites/Enemies/Cowboy/CowboyDefeated.png<>uid://dijpm6evdrxl::::res://Sprites/Enemies/Cowboy/Cowboy2.png<>uid://dbk2p050p43tk::::res://Sprites/Enemies/Cowboy/Cowboy3.png<>uid://c4fo38ib18q6n::::res://Sprites/Enemies/Cowboy/Cowboy4.png<>res://Scripts/AI/Enemy_Gun.gd<>uid://48nbm3dcmh6h::::res://Prefabs/Projectiles/bullet.tscn<>uid://o3gjucyaluhf::::res://Sprites/Guns/Revolver.png<>res://Scripts/State_Machine.gd<>res://Scripts/AI/Cowboy/CowboyIdle.gd<>res://Scripts/AI/Cowboy/HonoredCombat.gd
 GreatSludge.tscn::PackedScene::760583890614765513::1708570688::0::1::::<><>::res://Scripts/AI/Enemy.gd<>uid://e643x8olynw8::::res://Prefabs/Items/cheese.tscn<>uid://bnhwcsjrcfvk2::::res://Sprites/Enemies/Slime/Slime1.png<>uid://cxbnuuubhbrw3::::res://Sprites/Enemies/Slime/Slime2.png<>uid://bm35w1vdmduj6::::res://Sprites/Enemies/Slime/Slime3.png<>uid://gum5rmac1vl1::::res://Sprites/Enemies/Slime/Slime4.png<>uid://nf14qqp1vurp::::res://Sprites/Enemies/Slime/Slime5.png<>uid://cfmnglt6dlq06::::res://Sprites/Enemies/Slime/Slime6.png<>uid://4dtkpfgvlsfy::::res://Sprites/Enemies/Slime/Slime7.png<>uid://sndcy2sam0pn::::res://Sprites/Enemies/Slime/Slime8.png<>uid://dsflrm8meckbv::::res://Sprites/Enemies/Slime/Slime9.png<>uid://bslt5yiwyc1mn::::res://Sprites/Enemies/Slime/SlimeDefeated.png<>res://Scripts/State_Machine.gd<>res://Scripts/AI/Enemy_Chase_AI.gd
 knight.tscn::PackedScene::3580716043213014047::1708524948::0::1::::<><>::res://Scripts/AI/Enemy.gd<>uid://pybljjt42b46::::res://Prefabs/Items/shotgun.tscn<>uid://c4qqf3lcqqopn::::res://Sprites/Enemies/Knight/Walking/KnightWalking1.png<>uid://k5xes7ew0sfs::::res://Sprites/Enemies/Knight/Walking/KnightWalking2.png<>uid://b2chpjdwteomr::::res://Sprites/Enemies/Knight/Idle/KnightIdle1.png<>uid://cjv0q8lrls2e1::::res://Sprites/Enemies/Knight/Walking/KnightWalking3.png<>uid://dchppds53484q::::res://Sprites/Enemies/Knight/Idle/KnightIdle2.png<>uid://cjpy6v3og23gq::::res://Sprites/Enemies/Knight/Walking/KnightWalking4.png<>uid://bdy3xci0erwa3::::res://Sprites/Enemies/Knight/Walking/KnightWalking5.png<>uid://c8qa637veirvo::::res://Sprites/Enemies/Knight/Walking/KnightWalking6.png<>uid://cyqbb4rjw2wqx::::res://Sprites/Enemies/Knight/Walking/KnightWalking7.png<>uid://dp11m14n7i00b::::res://Sprites/Enemies/Knight/Walking/KnightWalking8.png<>uid://dk0lk4h6u6ont::::res://Sprites/Enemies/Knight/Defeated/knightDefeated.png<>uid://bi8ntvqhpc3n2::::res://Sprites/Enemies/Knight/Knoocked/KnightKnocked.png<>res://Scripts/AI/Enemy_Gun.gd<>uid://48nbm3dcmh6h::::res://Prefabs/Projectiles/bullet.tscn<>uid://ce44c76kvl7hm::::res://Sprites/Guns/Shotgun.png<>res://Scripts/State_Machine.gd<>res://Scripts/AI/Knight/Wandering.gd<>res://Scripts/AI/Knight/KnightRushing.gd
+Wizzard.tscn::PackedScene::3582022822016954346::1708798773::0::1::::<><>::res://Scripts/AI/Enemy.gd<>uid://rpq8chx2ox4y::::res://Prefabs/Items/FireStaff.tscn<>uid://b06c53ej341pt::::res://Sprites/Enemies/Wizzard/Wizzard1.png<>uid://b4a1c6g3kqv20::::res://Sprites/Enemies/Wizzard/Wizzard2.png<>uid://cpvikyje72ogx::::res://Sprites/Enemies/Wizzard/WizzardDefeated.png<>res://Scripts/AI/Wizzard/Phase2.gd<>uid://dd1lyhhog3lw4::::res://Prefabs/Projectiles/FireWall.tscn<>res://Scripts/AI/Enemy_Gun.gd<>uid://bpjnhgx85t0ys::::res://Prefabs/Projectiles/Fireball.tscn<>uid://8v2n5x7kgj08::::res://Sprites/Guns/FireStaff.png<>res://Scripts/State_Machine.gd<>res://Scripts/AI/Wizzard/Phase1.gd
 ::res://Prefabs/Enemies/::1708534940
 Cat.tscn::PackedScene::8860056845368557007::1708534940::0::1::::<><>::res://Scripts/AI/Enemy.gd<>uid://cfam84qexgy8u::::res://Sprites/Enemies/Cat/Cat1.png<>uid://dw0p7f2n7tms5::::res://Sprites/Enemies/Cat/Idle/Cat Idle1.png<>uid://d3a660oa3sx2w::::res://Sprites/Enemies/Cat/Idle/Cat Idle2.png<>res://Scripts/State_Machine.gd<>uid://dsvywg5lcqesx::::res://Sprites/Enemies/Cat/Cat2.png<>res://Scripts/AI/Enemy_Wandering_AI.gd<>uid://c2pgej48qy00l::::res://Sprites/Enemies/Cat/Cat3.png<>res://Scripts/AI/Cat_Chase_AI.gd<>uid://cai1gv16a2uyx::::res://Sprites/Enemies/Cat/Cat4.png<>uid://drm8vytqarr15::::res://Sprites/Enemies/Cat/Cat5.png<>res://Scripts/AI/Enemy_Gun.gd<>uid://cyj4wb0gp3yjc::::res://Sprites/Guns/Musket.png<>uid://byrljk4do70ig::::res://Sprites/Enemies/Cat/Cat6.png<>uid://48nbm3dcmh6h::::res://Prefabs/Projectiles/bullet.tscn<>uid://cnt8ycr1v3i16::::res://Sprites/Enemies/Cat/Cat7.png<>uid://6yojjpbp1axd::::res://Sprites/Enemies/Cat/Cat8.png<>uid://bq7upejbvr7u::::res://Sprites/Enemies/Cat/Defeated/CatDefeated.png
 CatHandgun.tscn::PackedScene::3908308124625914541::1708133419::0::1::::<><>::res://Scripts/AI/Enemy.gd<>uid://cfam84qexgy8u::::res://Sprites/Enemies/Cat/Cat1.png<>uid://dsvywg5lcqesx::::res://Sprites/Enemies/Cat/Cat2.png<>uid://c2pgej48qy00l::::res://Sprites/Enemies/Cat/Cat3.png<>uid://cai1gv16a2uyx::::res://Sprites/Enemies/Cat/Cat4.png<>uid://drm8vytqarr15::::res://Sprites/Enemies/Cat/Cat5.png<>uid://byrljk4do70ig::::res://Sprites/Enemies/Cat/Cat6.png<>uid://cnt8ycr1v3i16::::res://Sprites/Enemies/Cat/Cat7.png<>uid://6yojjpbp1axd::::res://Sprites/Enemies/Cat/Cat8.png<>uid://bq7upejbvr7u::::res://Sprites/Enemies/Cat/Defeated/CatDefeated.png<>uid://dw0p7f2n7tms5::::res://Sprites/Enemies/Cat/Idle/Cat Idle1.png<>uid://d3a660oa3sx2w::::res://Sprites/Enemies/Cat/Idle/Cat Idle2.png<>res://Scripts/AI/Enemy_Gun.gd<>uid://48nbm3dcmh6h::::res://Prefabs/Projectiles/bullet.tscn<>uid://behn8hi5lw4tc::::res://Sprites/Guns/Gun.png<>res://Scripts/State_Machine.gd<>res://Scripts/AI/Enemy_Wandering_AI.gd<>res://Scripts/AI/Cat_Chase_AI.gd
 CatMachineGun.tscn::PackedScene::7940656921204580862::1707425858::0::1::::<><>::res://Scripts/AI/Enemy.gd<>uid://cfam84qexgy8u::::res://Sprites/Enemies/Cat/Cat1.png<>uid://dsvywg5lcqesx::::res://Sprites/Enemies/Cat/Cat2.png<>uid://c2pgej48qy00l::::res://Sprites/Enemies/Cat/Cat3.png<>uid://cai1gv16a2uyx::::res://Sprites/Enemies/Cat/Cat4.png<>uid://drm8vytqarr15::::res://Sprites/Enemies/Cat/Cat5.png<>uid://byrljk4do70ig::::res://Sprites/Enemies/Cat/Cat6.png<>uid://cnt8ycr1v3i16::::res://Sprites/Enemies/Cat/Cat7.png<>uid://6yojjpbp1axd::::res://Sprites/Enemies/Cat/Cat8.png<>uid://bq7upejbvr7u::::res://Sprites/Enemies/Cat/Defeated/CatDefeated.png<>uid://dw0p7f2n7tms5::::res://Sprites/Enemies/Cat/Idle/Cat Idle1.png<>uid://d3a660oa3sx2w::::res://Sprites/Enemies/Cat/Idle/Cat Idle2.png<>res://Scripts/AI/Enemy_Gun.gd<>uid://48nbm3dcmh6h::::res://Prefabs/Projectiles/bullet.tscn<>uid://cwutnc4kn8gta::::res://Sprites/Guns/Machine Gun.png<>res://Scripts/State_Machine.gd<>res://Scripts/AI/Enemy_Wandering_AI.gd<>res://Scripts/AI/Cat_Chase_AI.gd
 sludge.tscn::PackedScene::5377848691904136847::1708534940::0::1::::<><>::res://Scripts/AI/Enemy.gd<>uid://bnhwcsjrcfvk2::::res://Sprites/Enemies/Slime/Slime1.png<>res://Scripts/State_Machine.gd<>res://Scripts/AI/Enemy_Wandering_AI.gd<>uid://cxbnuuubhbrw3::::res://Sprites/Enemies/Slime/Slime2.png<>res://Scripts/AI/Enemy_Chase_AI.gd<>uid://bm35w1vdmduj6::::res://Sprites/Enemies/Slime/Slime3.png<>uid://gum5rmac1vl1::::res://Sprites/Enemies/Slime/Slime4.png<>uid://nf14qqp1vurp::::res://Sprites/Enemies/Slime/Slime5.png<>uid://cfmnglt6dlq06::::res://Sprites/Enemies/Slime/Slime6.png<>uid://4dtkpfgvlsfy::::res://Sprites/Enemies/Slime/Slime7.png<>uid://sndcy2sam0pn::::res://Sprites/Enemies/Slime/Slime8.png<>uid://dsflrm8meckbv::::res://Sprites/Enemies/Slime/Slime9.png<>uid://bslt5yiwyc1mn::::res://Sprites/Enemies/Slime/SlimeDefeated.png
-::res://Prefabs/Items/::1708722430
+::res://Prefabs/Items/::1708737862
 Armor.tscn::PackedScene::8416276500356989544::1708569641::0::1::::<><>::res://Scripts/Upgrades/ArmorItem.gd<>res://Shaders/ItemShine.gdshader<>uid://ckiuv5nl7a0e5::::res://Sprites/Upgrades/Armor.png
 boomstick.tscn::PackedScene::1254007223608551950::1708710072::0::1::::<><>::res://Scripts/Gun/Gun.gd<>uid://bddtathwik0s0::::res://Sprites/Guns/Boomstick.png<>uid://dbkyu54q2n4qu::::res://Prefabs/itemDesc.tscn
 cheese.tscn::PackedScene::346563139614900913::1706802390::0::1::::<><>::res://Scripts/World/Cheese.gd<>uid://mmqk7kkmyn63::::res://Sprites/Cheese_item.png<>res://Shaders/ItemShine.gdshader
-FireStaff.tscn::PackedScene::1225206528182577038::1708722430::0::1::::<><>::res://Scripts/Gun/Gun.gd<>uid://bpjnhgx85t0ys::::res://Prefabs/Projectiles/Fireball.tscn<>uid://8v2n5x7kgj08::::res://Sprites/Guns/FireStaff.png<>uid://dbkyu54q2n4qu::::res://Prefabs/itemDesc.tscn
+FireStaff.tscn::PackedScene::1225206528182577038::1708737862::0::1::::<><>::res://Scripts/Gun/Gun.gd<>uid://bpjnhgx85t0ys::::res://Prefabs/Projectiles/Fireball.tscn<>uid://8v2n5x7kgj08::::res://Sprites/Guns/FireStaff.png<>uid://dbkyu54q2n4qu::::res://Prefabs/itemDesc.tscn<>uid://of75ofy0rhaw::::res://Prefabs/Particles/FireParticle.tscn
 handgun.tscn::PackedScene::4062341481152504965::1708136572::0::1::::<><>::res://Scripts/Gun/Gun.gd<>uid://behn8hi5lw4tc::::res://Sprites/Guns/Gun.png<>uid://dbkyu54q2n4qu::::res://Prefabs/itemDesc.tscn
 machine_gun.tscn::PackedScene::384623863413642373::1708136595::0::1::::<><>::res://Scripts/Gun/Gun.gd<>uid://cwutnc4kn8gta::::res://Sprites/Guns/Machine Gun.png<>uid://dbkyu54q2n4qu::::res://Prefabs/itemDesc.tscn
 revolver.tscn::PackedScene::1579646858329726754::1708136072::0::1::::<><>::res://Scripts/Gun/Gun.gd<>uid://dbkyu54q2n4qu::::res://Prefabs/itemDesc.tscn<>uid://o3gjucyaluhf::::res://Sprites/Guns/Revolver.png
@@ -53,13 +54,15 @@ shotgun.tscn::PackedScene::1102458568910121925::1708136612::0::1::::<><>::res://
 smg.tscn::PackedScene::1409930615079055058::1708136624::0::1::::<><>::res://Scripts/Gun/Gun.gd<>uid://baq7rlhckug8m::::res://Sprites/Guns/Smg.png<>uid://dbkyu54q2n4qu::::res://Prefabs/itemDesc.tscn
 sniper_rifle.tscn::PackedScene::4396931791931095601::1708710583::0::1::::<><>::res://Scripts/Gun/Gun.gd<>uid://du3bp0xejvgcb::::res://Sprites/Guns/Sniper RIfle.png<>uid://dbkyu54q2n4qu::::res://Prefabs/itemDesc.tscn
 UpgradeItem.tscn::PackedScene::6989722745228737531::1708137244::0::1::::<><>::res://Scripts/Upgrades/UpgradeItem.gd<>uid://dcqjv7b12ceaa::::res://Prefabs/upgrades/Up_explodingbullets.tscn<>uid://do5fxwhklhp0n::::res://Shaders/Materials/ItemShineMaterial.tres<>uid://bddtathwik0s0::::res://Sprites/Guns/Boomstick.png
-::res://Prefabs/Particles/::1708533840
+::res://Prefabs/Particles/::1708737930
+FireParticle.tscn::PackedScene::994962961463884938::1708737930::0::1::::<><>::uid://cjdpr3rfngn77::::res://Sprites/Particles/FireParticle.png
 ParryParticle.tscn::PackedScene::6312525275235470843::1708533840::0::1::::<><>::uid://b3c4vnhl8e4oj::::res://Sprites/Particles/ParryParticle.png
-::res://Prefabs/Projectiles/::1708719897
-bullet.tscn::PackedScene::2104392711760965793::1708719610::0::1::::<><>::res://Scripts/Projectiles/Bullet.gd<>uid://crdfxun5padhv::::res://Sprites/Projectiles/bullet.png
+::res://Prefabs/Projectiles/::1708804496
+bullet.tscn::PackedScene::2104392711760965793::1708798774::0::1::::<><>::res://Scripts/Projectiles/Bullet.gd<>uid://crdfxun5padhv::::res://Sprites/Projectiles/bullet.png
 ExplodingBullet.tscn::PackedScene::4016251373625860606::1708719616::0::1::::<><>::res://Scripts/Projectiles/Bullet.gd<>uid://b6dfn57qs7d5r::::res://Prefabs/Projectiles/Explosion.tscn<>uid://bhjpyli7v8amg::::res://Sprites/Projectiles/ExplodingBullet.png
 Explosion.tscn::PackedScene::4568796395905408953::1708719322::0::1::::<><>::res://Scripts/Projectiles/Explosion.gd<>uid://cel8rc6l8ath4::::res://Sprites/Effects/Explosion/Explosion1.png<>uid://cc7aybs3db77a::::res://Sprites/Effects/Explosion/Explosion2.png<>uid://ps60thrkg5m8::::res://Sprites/Effects/Explosion/Explosion3.png<>uid://dnimntj7qefg3::::res://Sprites/Effects/Explosion/Explosion4.png<>uid://cbyymtohvse27::::res://Sprites/Effects/Explosion/Explosion5.png<>uid://bgf8qlcjkmvlq::::res://Sprites/Effects/Explosion/Explosion6.png<>uid://duvvujj46d5ht::::res://Sprites/Effects/Explosion/Explosion7.png<>uid://bramp4a3fo4ah::::res://Sprites/Effects/Explosion/Explosion8.png<>uid://7klei6w2tmjx::::res://Sprites/Effects/Explosion/Explosion9.png<>uid://dyy5jvyj3manh::::res://Sprites/Effects/Explosion/Explosion10.png
-Fireball.tscn::PackedScene::3458634911724261118::1708719897::0::1::::<><>::res://Scripts/Projectiles/Bullet.gd<>uid://b6dfn57qs7d5r::::res://Prefabs/Projectiles/Explosion.tscn<>uid://cx2ogls04v48f::::res://Sprites/Projectiles/Fireball/Fireball1.png<>uid://dj4hc686t1ueh::::res://Sprites/Projectiles/Fireball/Fireball2.png<>uid://dldppwfps3smm::::res://Sprites/Projectiles/Fireball/Fireball3.png<>uid://unaqr0jiylnj::::res://Sprites/Projectiles/Fireball/Fireball4.png<>uid://cgbo4wkysgpkg::::res://Sprites/Projectiles/Fireball/Fireball5.png<>uid://yr6i1ut4e223::::res://Sprites/Projectiles/Fireball/Fireball6.png<>uid://qgn0g4ylsb3g::::res://Sprites/Projectiles/Fireball/Fireball7.png<>uid://dyodrp2v1hl56::::res://Sprites/Projectiles/Fireball/Fireball8.png
+Fireball.tscn::PackedScene::3458634911724261118::1708804496::0::1::::<><>::res://Scripts/Projectiles/Bullet.gd<>uid://b6dfn57qs7d5r::::res://Prefabs/Projectiles/Explosion.tscn<>uid://cx2ogls04v48f::::res://Sprites/Projectiles/Fireball/Fireball1.png<>uid://dj4hc686t1ueh::::res://Sprites/Projectiles/Fireball/Fireball2.png<>uid://dldppwfps3smm::::res://Sprites/Projectiles/Fireball/Fireball3.png<>uid://unaqr0jiylnj::::res://Sprites/Projectiles/Fireball/Fireball4.png<>uid://cgbo4wkysgpkg::::res://Sprites/Projectiles/Fireball/Fireball5.png<>uid://yr6i1ut4e223::::res://Sprites/Projectiles/Fireball/Fireball6.png<>uid://qgn0g4ylsb3g::::res://Sprites/Projectiles/Fireball/Fireball7.png<>uid://dyodrp2v1hl56::::res://Sprites/Projectiles/Fireball/Fireball8.png
+FireWall.tscn::PackedScene::7424213528695412981::1708804496::0::1::::<><>::res://Scripts/Projectiles/FireWall.gd
 ::res://Prefabs/upgrades/::1708710059
 up_armor.tscn::PackedScene::1523166370992751712::1706912147::0::1::::<><>::res://Scripts/Upgrades/Up_Armor.gd<>uid://ckiuv5nl7a0e5::::res://Sprites/Upgrades/Armor.png
 Up_explodingbullets.tscn::PackedScene::7333255420536719696::1708710019::0::1::::<><>::res://Scripts/Upgrades/Exploding_Bullets.gd<>uid://bbw1i2yfiwcou::::res://Sprites/Upgrades/ExplodingBullets.png
@@ -69,26 +72,29 @@ Up_reloadingThrow.tscn::PackedScene::8962353621059177448::1708710059::0::1::::<>
 ::res://Resources/::1704054900
 Default.tres::FontVariation::6891039413958034950::1704054900::0::1::::<><>::uid://du55vq5fuyk7l::::res://Resources/Monocraft.ttf
 Monocraft.ttf::FontFile::8626830154889335443::1704054810::1704054810::1::::<><>::
-::res://Scenes/::1708722430
-Debug.tscn::PackedScene::2015857043781267727::1708722430::0::1::::<><>::res://Scripts/State_Machine.gd<>res://Scripts/World/World.gd<>res://Scripts/player/Player.gd<>res://Scripts/player/Player_Moving_State.gd<>uid://bl37iav7u0m70::::res://TileSets/BlueTileSet.tres<>uid://civcm84v6ov48::::res://Prefabs/Enemies/sludge.tscn<>uid://dyh43vdbgg776::::res://Prefabs/Enemies/Cat.tscn<>uid://b4m8vo5rgml0k::::res://TileSets/GreenTileSet.tres<>uid://c6mp5enmusnru::::res://Sprites/Player/Run/player Run6.png<>uid://wtm5mvlii5ey::::res://Sprites/Player/Idle/player1.png<>uid://dbub760ykcsek::::res://TileSets/BrownTIleSet.tres<>res://Scripts/World/Enemy_Spawner_Dict.gd<>uid://rx28j4no1bmw::::res://Sprites/UI/Health Icons/H0.png<>res://Scripts/UI/HealthMeter.gd<>res://Shaders/ChromaticAberration.gdshader<>uid://bx04e80l1f68::::res://Sprites/UI/Health Icons/H1.png<>uid://dcl6ivsx4m876::::res://Sprites/Player/Idle/player2.png<>uid://cb7keh4n8a34j::::res://Sprites/Player/Defeated/PlayerDefeated.png<>uid://b7bjjlqr6s0m1::::res://Sprites/Player/Idle/player3.png<>uid://1lhirbrjyyk2::::res://Sprites/TIles/Water/WaterGreen.png<>uid://bcklkit310jk7::::res://Sprites/Player/Idle/player4.png<>uid://cpol2gcacahab::::res://Sprites/TIles/Water/WaterBrown.png<>uid://bo7kmhcnfb0hq::::res://Sprites/Player/Idle/player5.png<>uid://cs40mvj0a333l::::res://Sprites/UI/Health Icons/H2.png<>uid://dw67vu311msyh::::res://Sprites/Player/Idle/player6.png<>uid://diunf7dqubw55::::res://Sprites/Player/Idle/player7.png<>uid://btjruv6nq08un::::res://Sprites/Player/Idle/player8.png<>uid://brar4t2yv5wyx::::res://Prefabs/Bosses/knight.tscn<>uid://dp5j8741vcvkb::::res://Sprites/Player/Idle/player9.png<>uid://bsgh13n1selx4::::res://Sprites/Player/Run/player Run1.png<>uid://dkaxi3hqwk8o::::res://Sprites/Player/Run/player Run2.png<>uid://c77ifq4hyimtf::::res://Sprites/Player/Run/player Run3.png<>uid://bchvcxnnj7bnx::::res://Sprites/Player/Run/player Run4.png<>res://Scripts/player/Gun_Handler.gd<>uid://de7s6pa0ibfuk::::res://Sprites/Player/Run/player Run5.png<>uid://c7w3ubgs80od4::::res://Sprites/Player/Run/player Run7.png<>uid://bdjrolle8ifsu::::res://Sprites/Player/Run/player Run8.png<>uid://c6bfjt2bf8yh6::::res://Sprites/UI/Cheese.png<>uid://dvom8gaf21pk4::::res://Sprites/UI/Bar.png<>uid://yv5og8urtjvc::::res://Sprites/UI/bullet.png<>res://Scripts/UI/Ammo_Meter.gd<>res://Scripts/UI/CheeseMeter.gd<>res://Scripts/Upgrades/UpgradeManager.gd<>uid://c5gcoaxgcnc8u::::res://Resources/Default.tres<>uid://dfaywge2myui::::res://Sprites/TIles/Ground Blue Map.png<>uid://cyj4wb0gp3yjc::::res://Sprites/Guns/Musket.png<>res://Scripts/Gun/Gun.gd<>uid://c0dr6ujtq18ap::::res://Sprites/Player/Slash/Slash1.png<>uid://236uq5q11evf::::res://Sprites/Player/Slash/Slash2.png<>uid://dfefsahr6wbwj::::res://Sprites/Player/Slash/Slash3.png<>uid://bjugdv5e4wxae::::res://Sprites/UI/LMB/LMB1.png<>uid://bkihh0swfrjsp::::res://Sprites/Player/Slash/Slash4.png<>uid://lkahiy2wlrmj::::res://Sprites/Player/Slash/Slash5.png<>uid://bupnkmc1rvlnr::::res://Sprites/UI/LMB/LMB2.png<>uid://bdxcn648wwmkp::::res://Sprites/Player/Slash/Slash6.png<>uid://b8cx84dbsctxt::::res://Sprites/TIles/Water/Water.png<>uid://bgbgdlci2w1o6::::res://Sprites/Player/Slash/Slash7.png<>uid://dbkyu54q2n4qu::::res://Prefabs/itemDesc.tscn<>uid://48nbm3dcmh6h::::res://Prefabs/Projectiles/bullet.tscn<>uid://d04h7y6sdufn6::::res://Sprites/Player/Slash/Slash8.png<>res://Shaders/ItemShine.gdshader<>uid://dbe2rnqejv7c0::::res://Sprites/TIles/Stairs.png<>uid://cw5my7n3pxwan::::res://Sprites/Player/Slash/Slash9.png<>res://Scripts/World/Stairs.gd<>res://Scripts/World/Water.gd<>res://Shaders/Water.gdshader<>res://Scripts/UI/FPSCounter.gd<>res://Scripts/UI/DeathScreen.gd<>uid://du55vq5fuyk7l::::res://Resources/Monocraft.ttf<>uid://do5fxwhklhp0n::::res://Shaders/Materials/ItemShineMaterial.tres<>uid://bvxhi77puyf62::::res://Prefabs/Enemies/CatHandgun.tscn<>uid://k3ox8vfrwpor::::res://Prefabs/Bosses/GreatSludge.tscn<>uid://dlerpvag6rqlq::::res://Prefabs/Enemies/CatMachineGun.tscn<>res://Scripts/UI/ReloadLabel.gd<>res://Scripts/UI/BossHealth.gd<>res://Scripts/UI/PausedScreen.gd<>uid://bstq6qh1nxidy::::res://Prefabs/Bosses/cowboy.tscn<>uid://rpq8chx2ox4y::::res://Prefabs/Items/FireStaff.tscn
+::res://Scenes/::1708815247
+Debug.tscn::PackedScene::2015857043781267727::1708815247::0::1::::<><>::res://Scripts/State_Machine.gd<>res://Scripts/World/World.gd<>res://Scripts/player/Player.gd<>res://Scripts/player/Player_Moving_State.gd<>uid://bl37iav7u0m70::::res://TileSets/BlueTileSet.tres<>uid://civcm84v6ov48::::res://Prefabs/Enemies/sludge.tscn<>uid://dyh43vdbgg776::::res://Prefabs/Enemies/Cat.tscn<>uid://b4m8vo5rgml0k::::res://TileSets/GreenTileSet.tres<>uid://c6mp5enmusnru::::res://Sprites/Player/Run/player Run6.png<>uid://wtm5mvlii5ey::::res://Sprites/Player/Idle/player1.png<>uid://dbub760ykcsek::::res://TileSets/BrownTIleSet.tres<>res://Scripts/World/Enemy_Spawner_Dict.gd<>uid://rx28j4no1bmw::::res://Sprites/UI/Health Icons/H0.png<>res://Scripts/UI/HealthMeter.gd<>res://Shaders/ChromaticAberration.gdshader<>uid://bx04e80l1f68::::res://Sprites/UI/Health Icons/H1.png<>uid://dcl6ivsx4m876::::res://Sprites/Player/Idle/player2.png<>uid://cb7keh4n8a34j::::res://Sprites/Player/Defeated/PlayerDefeated.png<>uid://b7bjjlqr6s0m1::::res://Sprites/Player/Idle/player3.png<>uid://1lhirbrjyyk2::::res://Sprites/TIles/Water/WaterGreen.png<>uid://bcklkit310jk7::::res://Sprites/Player/Idle/player4.png<>uid://cpol2gcacahab::::res://Sprites/TIles/Water/WaterBrown.png<>uid://bo7kmhcnfb0hq::::res://Sprites/Player/Idle/player5.png<>uid://cs40mvj0a333l::::res://Sprites/UI/Health Icons/H2.png<>uid://dw67vu311msyh::::res://Sprites/Player/Idle/player6.png<>uid://diunf7dqubw55::::res://Sprites/Player/Idle/player7.png<>uid://btjruv6nq08un::::res://Sprites/Player/Idle/player8.png<>uid://brar4t2yv5wyx::::res://Prefabs/Bosses/knight.tscn<>uid://dp5j8741vcvkb::::res://Sprites/Player/Idle/player9.png<>uid://bsgh13n1selx4::::res://Sprites/Player/Run/player Run1.png<>uid://dkaxi3hqwk8o::::res://Sprites/Player/Run/player Run2.png<>uid://c77ifq4hyimtf::::res://Sprites/Player/Run/player Run3.png<>uid://bchvcxnnj7bnx::::res://Sprites/Player/Run/player Run4.png<>res://Scripts/player/Gun_Handler.gd<>uid://de7s6pa0ibfuk::::res://Sprites/Player/Run/player Run5.png<>uid://c7w3ubgs80od4::::res://Sprites/Player/Run/player Run7.png<>uid://bdjrolle8ifsu::::res://Sprites/Player/Run/player Run8.png<>uid://c6bfjt2bf8yh6::::res://Sprites/UI/Cheese.png<>uid://dvom8gaf21pk4::::res://Sprites/UI/Bar.png<>uid://yv5og8urtjvc::::res://Sprites/UI/bullet.png<>res://Scripts/UI/Ammo_Meter.gd<>res://Scripts/UI/CheeseMeter.gd<>res://Scripts/Upgrades/UpgradeManager.gd<>uid://c5gcoaxgcnc8u::::res://Resources/Default.tres<>uid://dfaywge2myui::::res://Sprites/TIles/Ground Blue Map.png<>uid://cyj4wb0gp3yjc::::res://Sprites/Guns/Musket.png<>res://Scripts/Gun/Gun.gd<>uid://c0dr6ujtq18ap::::res://Sprites/Player/Slash/Slash1.png<>uid://236uq5q11evf::::res://Sprites/Player/Slash/Slash2.png<>uid://dfefsahr6wbwj::::res://Sprites/Player/Slash/Slash3.png<>uid://bjugdv5e4wxae::::res://Sprites/UI/LMB/LMB1.png<>uid://bkihh0swfrjsp::::res://Sprites/Player/Slash/Slash4.png<>uid://lkahiy2wlrmj::::res://Sprites/Player/Slash/Slash5.png<>uid://bupnkmc1rvlnr::::res://Sprites/UI/LMB/LMB2.png<>uid://bdxcn648wwmkp::::res://Sprites/Player/Slash/Slash6.png<>uid://b8cx84dbsctxt::::res://Sprites/TIles/Water/Water.png<>uid://bgbgdlci2w1o6::::res://Sprites/Player/Slash/Slash7.png<>uid://dbkyu54q2n4qu::::res://Prefabs/itemDesc.tscn<>uid://48nbm3dcmh6h::::res://Prefabs/Projectiles/bullet.tscn<>uid://d04h7y6sdufn6::::res://Sprites/Player/Slash/Slash8.png<>res://Shaders/ItemShine.gdshader<>uid://dbe2rnqejv7c0::::res://Sprites/TIles/Stairs.png<>uid://cw5my7n3pxwan::::res://Sprites/Player/Slash/Slash9.png<>res://Scripts/World/Stairs.gd<>res://Scripts/World/Water.gd<>res://Shaders/Water.gdshader<>res://Scripts/UI/FPSCounter.gd<>res://Scripts/UI/DeathScreen.gd<>uid://du55vq5fuyk7l::::res://Resources/Monocraft.ttf<>uid://do5fxwhklhp0n::::res://Shaders/Materials/ItemShineMaterial.tres<>uid://bvxhi77puyf62::::res://Prefabs/Enemies/CatHandgun.tscn<>uid://k3ox8vfrwpor::::res://Prefabs/Bosses/GreatSludge.tscn<>uid://dlerpvag6rqlq::::res://Prefabs/Enemies/CatMachineGun.tscn<>res://Scripts/UI/ReloadLabel.gd<>res://Scripts/UI/BossHealth.gd<>res://Scripts/UI/PausedScreen.gd<>uid://bstq6qh1nxidy::::res://Prefabs/Bosses/cowboy.tscn<>uid://brbfnl1lm13te::::res://Prefabs/Bosses/Wizzard.tscn
 TitleScreen.tscn::PackedScene::2031294301335456238::1708173830::0::1::::<><>::uid://do5fxwhklhp0n::::res://Shaders/Materials/ItemShineMaterial.tres<>res://Scripts/TitleScreen/Title.gd<>uid://bx04e80l1f68::::res://Sprites/UI/Health Icons/H1.png<>res://Shaders/SimpleWobble.gdshader<>uid://bi2cj2i03c87p::::res://Sprites/UI/MenuIcons/MenuPlayerBottomless.png<>res://Scripts/TitleScreen/PlayButton.gd<>res://Scripts/TitleScreen/MenuIcon.gd<>res://Scripts/TitleScreen/QuitButton.gd<>uid://rx28j4no1bmw::::res://Sprites/UI/Health Icons/H0.png<>res://Scripts/TitleScreen/ConfigButton.gd<>res://Scripts/TitleScreen/ConfigMaxFPS.gd<>res://Shaders/ItemShine.gdshader<>uid://cs40mvj0a333l::::res://Sprites/UI/Health Icons/H2.png<>uid://ipi0bmou38b4::::res://Sprites/UI/MenuIcons/MenuPlayerSaturation.png<>res://Scripts/TitleScreen/Vsync.gd<>uid://o8f1nu1wqcb3::::res://Sprites/UI/MenuIcons/MenuPlayerThatB.png<>res://Scripts/TitleScreen/ApplyButton.gd<>uid://c2b171lkxsg4n::::res://Sprites/UI/MenuIcons/MenuBackground.png
 ::res://Scripts/::1708535239
 State.gd::GDScript::-1::1708535239::0::1::::State<>Node<>::
 State_Machine.gd::GDScript::-1::1708535057::0::1::::<>Node<>::
-::res://Scripts/AI/::1708721328
+::res://Scripts/AI/::1708814373
 Cat_Chase_AI.gd::GDScript::-1::1708535056::0::1::::<>State<>::
-Enemy.gd::GDScript::-1::1708535056::0::1::::Enemy<>CharacterBody2D<>::
+Enemy.gd::GDScript::-1::1708798368::0::1::::Enemy<>CharacterBody2D<>::
 Enemy_Chase_AI.gd::GDScript::-1::1708535056::0::1::::<>State<>::
 Enemy_Gun.gd::GDScript::-1::1708535056::0::1::::Enemy_Gun<>Node2D<>::
-Enemy_Wandering_AI.gd::GDScript::-1::1708721328::0::1::::<>State<>::
+Enemy_Wandering_AI.gd::GDScript::-1::1708814373::0::1::::<>State<>::
 ::res://Scripts/AI/Cowboy/::1708633557
 CowboyIdle.gd::GDScript::-1::1708621255::0::1::::<>State<>::
 HonoredCombat.gd::GDScript::-1::1708633557::0::1::::<>State<>::
 ::res://Scripts/AI/Knight/::1708535057
 KnightRushing.gd::GDScript::-1::1708535056::0::1::::<>State<>::
 Wandering.gd::GDScript::-1::1708535057::0::1::::<>State<>::
-::res://Scripts/Gun/::1708712096
-Gun.gd::GDScript::-1::1708712096::0::1::::Gun<>RigidBody2D<>::
+::res://Scripts/AI/Wizzard/::1708798803
+Phase1.gd::GDScript::-1::1708795998::0::1::::<>State<>::
+Phase2.gd::GDScript::-1::1708798803::0::1::::<>State<>::
+::res://Scripts/Gun/::1708737862
+Gun.gd::GDScript::-1::1708737862::0::1::::Gun<>RigidBody2D<>::
 Laser.gd::GDScript::-1::1708548261::0::1::::<>Node2D<>::
 ::res://Scripts/Npcs/::1708535056
 Shopkeeper.gd::GDScript::-1::1708535056::0::1::::<>StaticBody2D<>::
@@ -96,19 +102,20 @@ Shopkeeper.gd::GDScript::-1::1708535056::0::1::::<>StaticBody2D<>::
 Gun_Handler.gd::GDScript::-1::1708534940::0::1::::<>Node2D<>::
 Player.gd::GDScript::-1::1708535342::0::1::::Player<>CharacterBody2D<>::
 Player_Moving_State.gd::GDScript::-1::1706921502::0::1::::<>State<>::
-::res://Scripts/Projectiles/::1708718996
+::res://Scripts/Projectiles/::1708798406
 Bullet.gd::GDScript::-1::1708718996::0::1::::Bullet<>RigidBody2D<>::
 Explosion.gd::GDScript::-1::1707151828::0::1::::<>StaticBody2D<>::
-::res://Scripts/TitleScreen/::1708721329
+FireWall.gd::GDScript::-1::1708798406::0::1::::<>RigidBody2D<>::
+::res://Scripts/TitleScreen/::1708814373
 ApplyButton.gd::GDScript::-1::1707595425::0::1::::<>Button<>::
 ConfigButton.gd::GDScript::-1::1707594440::0::1::::<>Button<>::
 ConfigMaxFPS.gd::GDScript::-1::1707594964::0::1::::<>TextEdit<>::
 MenuIcon.gd::GDScript::-1::1707835594::0::1::::<>Sprite2D<>::
 PlayButton.gd::GDScript::-1::1707535729::0::1::::<>Button<>::
 QuitButton.gd::GDScript::-1::1707594446::0::1::::<>Button<>::
-Title.gd::GDScript::-1::1708721329::0::1::::<>Label<>::
+Title.gd::GDScript::-1::1708814373::0::1::::<>Label<>::
 Vsync.gd::GDScript::-1::1707595268::0::1::::<>Button<>::
-::res://Scripts/UI/::1708719087
+::res://Scripts/UI/::1708815107
 Ammo_Meter.gd::GDScript::-1::1707256037::0::1::::<>Node<>::
 BossHealth.gd::GDScript::-1::1708535056::0::1::::<>Control<>::
 CheeseMeter.gd::GDScript::-1::1704657976::0::1::::<>Node<>::
@@ -118,7 +125,7 @@ FPSCounter.gd::GDScript::-1::1706904974::0::1::::<>Label<>::
 HealthMeter.gd::GDScript::-1::1706880345::0::1::::<>Node<>::
 ItemDesc.gd::GDScript::-1::1708535419::0::1::::ItemDesc<>Node2D<>::
 PausedScreen.gd::GDScript::-1::1708396919::0::1::::<>Control<>::
-ReloadLabel.gd::GDScript::-1::1708196570::0::1::::<>Label<>::
+ReloadLabel.gd::GDScript::-1::1708815107::0::1::::<>Label<>::
 ::res://Scripts/Upgrades/::1708710072
 ArmorItem.gd::GDScript::-1::1708569641::0::1::::<>StaticBody2D<>::
 Exploding_Bullets.gd::GDScript::-1::1708709938::0::1::::<>Upgrade<>::
@@ -129,22 +136,22 @@ Up_Armor.gd::GDScript::-1::1706904910::0::1::::<>Upgrade<>::
 Up_Laser.gd::GDScript::-1::1708546127::0::1::::<>Upgrade<>::
 Up_Luck.gd::GDScript::-1::1708546247::0::1::::<>Upgrade<>::
 Up_ReloadOnEnemykill.gd::GDScript::-1::1707313519::0::1::::<>Upgrade<>::
-::res://Scripts/World/::1708721535
+::res://Scripts/World/::1708814413
 Cheese.gd::GDScript::-1::1706643753::0::1::::<>StaticBody2D<>::
 Enemy_Spawner_Data.gd::GDScript::-1::1708535502::0::1::::Enemy_Spawner_Data<>Node<>::
-Enemy_Spawner_Dict.gd::GDScript::-1::1708633613::0::1::::<>Node<>::
+Enemy_Spawner_Dict.gd::GDScript::-1::1708814413::0::1::::<>Node<>::
 Spikes.gd::GDScript::-1::1707742193::0::1::::<>StaticBody2D<>::
 Stairs.gd::GDScript::-1::1704644464::0::1::::<>Sprite2D<>::
 Water.gd::GDScript::-1::1706638288::0::1::::<>Sprite2D<>::
 World.gd::GDScript::-1::1708721535::0::1::::World<>Node2D<>::
-::res://Shaders/::1708722430
-ChromaticAberration.gdshader::Shader::-1::1708722430::0::1::::<><>::
-DownwardsWobble.gdshader::Shader::-1::1708722430::0::1::::<><>::
-ItemShine.gdshader::Shader::-1::1708722430::0::1::::<><>::
-SimpleWobble.gdshader::Shader::-1::1708722430::0::1::::<><>::
-Water.gdshader::Shader::-1::1708722430::0::1::::<><>::
-::res://Shaders/Materials/::1708721328
-ItemShineMaterial.tres::ShaderMaterial::8204183019653876099::1708721328::0::1::::<><>::
+::res://Shaders/::1708830576
+ChromaticAberration.gdshader::Shader::-1::1708830576::0::1::::<><>::
+DownwardsWobble.gdshader::Shader::-1::1708830576::0::1::::<><>::
+ItemShine.gdshader::Shader::-1::1708830576::0::1::::<><>::
+SimpleWobble.gdshader::Shader::-1::1708830576::0::1::::<><>::
+Water.gdshader::Shader::-1::1708830576::0::1::::<><>::
+::res://Shaders/Materials/::1708814374
+ItemShineMaterial.tres::ShaderMaterial::8204183019653876099::1708814373::0::1::::<><>::
 ::res://Sprites/::1708719598
 Cheese_item.png::CompressedTexture2D::868029683195016750::1704660216::1704660217::1::::<><>::
 ::res://Sprites/Effects/::1706119698
@@ -160,7 +167,7 @@ Explosion8.png::CompressedTexture2D::3580387940818034107::1706838864::1706838936
 Explosion9.png::CompressedTexture2D::2267362273165844161::1706838864::1706838936::1::::<><>::
 Explosion10.png::CompressedTexture2D::8895178086930120321::1706838864::1706838936::1::::<><>::
 Explosion.png::CompressedTexture2D::8092880629766990408::1706119704::1706119705::1::::<><>::
-::res://Sprites/Enemies/::1708633047
+::res://Sprites/Enemies/::1708738977
 ::res://Sprites/Enemies/Cat/::1706990153
 Cat1.png::CompressedTexture2D::5124574668795190134::1705189348::1706989245::1::::<><>::
 Cat2.png::CompressedTexture2D::8467510026678774027::1705189348::1706989245::1::::<><>::
@@ -213,6 +220,11 @@ Slime8.png::CompressedTexture2D::1290423121941930575::1705181293::1706989245::1:
 Slime9.png::CompressedTexture2D::8433682052560407407::1705181293::1706989245::1::::<><>::
 Slime.png::CompressedTexture2D::1318061224391826430::1704299238::1706989245::1::::<><>::
 SlimeDefeated.png::CompressedTexture2D::3673736495102650461::1706989133::1706989245::1::::<><>::
+::res://Sprites/Enemies/Wizzard/::1708785655
+Wizzard1.png::CompressedTexture2D::4205313970102971841::1708785641::1708785655::1::::<><>::
+Wizzard2.png::CompressedTexture2D::4423481001374668323::1708785641::1708785559::1::::<><>::
+Wizzard.png::CompressedTexture2D::3536066494584703439::1708785483::1708785559::1::::<><>::
+WizzardDefeated.png::CompressedTexture2D::5869530823362349107::1708785479::1708785559::1::::<><>::
 ::res://Sprites/Guns/::1708722270
 Boomstick.png::CompressedTexture2D::2604334980499916593::1704125648::1704125971::1::::<><>::
 FireStaff.png::CompressedTexture2D::2361247959714332071::1708722258::1708722270::1::::<><>::
@@ -223,7 +235,8 @@ Revolver.png::CompressedTexture2D::1040827816795387547::1704499568::1704499570::
 Shotgun.png::CompressedTexture2D::5115229790303130786::1704500783::1704500785::1::::<><>::
 Smg.png::CompressedTexture2D::2421424618698478406::1704230847::1704230848::1::::<><>::
 Sniper RIfle.png::CompressedTexture2D::8620930353663820757::1704240855::1704240858::1::::<><>::
-::res://Sprites/Particles/::1708532965
+::res://Sprites/Particles/::1708737930
+FireParticle.png::CompressedTexture2D::5411676703938833652::1708737862::1708737930::1::::<><>::
 ParryParticle.png::CompressedTexture2D::4357636049689620393::1708532962::1708532965::1::::<><>::
 ::res://Sprites/Player/::1707324134
 ::res://Sprites/Player/Defeated/::1706967473
@@ -262,7 +275,7 @@ Slash9.png::CompressedTexture2D::6379700425134451277::1707324466::1707324468::1:
 ::res://Sprites/Projectiles/::1708719626
 bullet.png::CompressedTexture2D::5972590572651148671::1704165794::1708719610::1::::<><>::
 ExplodingBullet.png::CompressedTexture2D::2897276194489661174::1706896744::1708719616::1::::<><>::
-::res://Sprites/Projectiles/Fireball/::1708719888
+::res://Sprites/Projectiles/Fireball/::1708722553
 Fireball1.png::CompressedTexture2D::6443784329821551219::1708722552::1708722553::1::::<><>::
 Fireball2.png::CompressedTexture2D::7851258869863837055::1708722552::1708722553::1::::<><>::
 Fireball3.png::CompressedTexture2D::7938471170104341516::1708722552::1708722553::1::::<><>::
@@ -308,7 +321,7 @@ Armor.png::CompressedTexture2D::5492498263651879466::1706902066::1706902067::1::
 ExplodingBullets.png::CompressedTexture2D::2503620221528110920::1706901970::1706902067::1::::<><>::
 Luck.png::CompressedTexture2D::5274546986226885074::1706910770::1706910772::1::::<><>::
 ReloadingThrow.png::CompressedTexture2D::218870001596688598::1707313340::1707313342::1::::<><>::
-::res://TileSets/::1708721329
-BlueTileSet.tres::TileSet::3218257804867447633::1708721329::0::1::::<><>::uid://dfaywge2myui::::res://Sprites/TIles/Ground Blue Map.png
-BrownTIleSet.tres::TileSet::7270857980144132170::1708721329::0::1::::<><>::uid://bnvbcfxbsg1lr::::res://Sprites/TIles/GroundBrown.png
-GreenTileSet.tres::TileSet::4448711627129993576::1708721329::0::1::::<><>::uid://d21jy1ap8k25k::::res://Sprites/TIles/GroundGreen.png
+::res://TileSets/::1708814374
+BlueTileSet.tres::TileSet::3218257804867447633::1708814374::0::1::::<><>::uid://dfaywge2myui::::res://Sprites/TIles/Ground Blue Map.png
+BrownTIleSet.tres::TileSet::7270857980144132170::1708814374::0::1::::<><>::uid://bnvbcfxbsg1lr::::res://Sprites/TIles/GroundBrown.png
+GreenTileSet.tres::TileSet::4448711627129993576::1708814374::0::1::::<><>::uid://d21jy1ap8k25k::::res://Sprites/TIles/GroundGreen.png

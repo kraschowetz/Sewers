@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3c4vnhl8e4oj"
-path="res://.godot/imported/ParryParticle.png-df4ac5cbd389d95e5ffd8f384954bf23.ctex"
+uid="uid://cpvikyje72ogx"
+path="res://.godot/imported/WizzardDefeated.png-5b5efcb9ea1fdba40d1d3e5c3054e16f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Particles/ParryParticle.png"
-dest_files=["res://.godot/imported/ParryParticle.png-df4ac5cbd389d95e5ffd8f384954bf23.ctex"]
+source_file="res://Sprites/Enemies/Wizzard/WizzardDefeated.png"
+dest_files=["res://.godot/imported/WizzardDefeated.png-5b5efcb9ea1fdba40d1d3e5c3054e16f.ctex"]
 
 [params]
 
