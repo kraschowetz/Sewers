@@ -21,6 +21,10 @@ class_name World
 @export var debug: bool
 @export var layer: int = 0
 
+@export_category("SAVING SHANANIGANS")
+@export var save_layers: Array[Vector2]
+@export_multiline var placeholder_text: String
+
 var img: Image
 var enemy_count: int
 var current_stage: int = 0
@@ -35,6 +39,7 @@ var unload_after_layer_exit: Array[Node]
 var spawn_cheese_on_enemy_kill: bool = false
 var change_tileset_on_next_round: bool = false
 var paused: bool = false
+var current_savefile_line: int = 0
 
 signal state_changed
 
@@ -44,6 +49,14 @@ func _ready() -> void:
 		transition()
 	enemy_dict = enemy_spawner_dictionary.dict
 	boss_dict = enemy_spawner_dictionary.boss_dict
+	
+	var file = FileAccess.open("res://LevelsReached.txt", FileAccess.READ)
+	var txt = file.get_as_text()
+	
+	layer = Global.starting_layer
+	$Player.cheese = Global.starting_cheese
+	$Player.cheese_changed.emit()
+	
 	#generate_world()
 
 func update_tileset() -> void:
@@ -275,12 +288,21 @@ func transition() -> void:
 	$Player.ammo_changed.emit()
 	$UI/LayerLabel.text = "Layer %s" %layer
 	
+	for i in range(save_layers.size()):
+		if layer >= save_layers[i].y:
+			save_layers[i].x = 1
+		placeholder_text += "%s/%s\n" %[save_layers[i].x, save_layers[i].y]
+		var file = FileAccess.open("res://LevelsReached.txt", FileAccess.WRITE)
+		
+		file.store_string(placeholder_text)
+	
 	for y in img.get_height():
 		for x in img.get_width():
 			overlay_map.set_cell(-1, Vector2(x + 1, y), -1, Vector2(1, 2))
 		await get_tree().create_timer(.075).timeout
 	set_visibility(true)
 	generating_world = false
+	placeholder_text = ""
 
 func _on_exit_body_entered(body):
 	if body.name != "Player": return

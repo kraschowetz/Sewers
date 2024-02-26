@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://368ede6aao7w"]
+[gd_scene load_steps=37 format=3 uid="uid://368ede6aao7w"]
 
 [ext_resource type="Material" uid="uid://do5fxwhklhp0n" path="res://Shaders/Materials/ItemShineMaterial.tres" id="1_nr5e2"]
 [ext_resource type="Script" path="res://Scripts/TitleScreen/Title.gd" id="2_0ujnd"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Scripts/TitleScreen/Vsync.gd" id="9_2n2f4"]
 [ext_resource type="Texture2D" uid="uid://o8f1nu1wqcb3" path="res://Sprites/UI/MenuIcons/MenuPlayerThatB.png" id="10_w8141"]
 [ext_resource type="Script" path="res://Scripts/TitleScreen/ApplyButton.gd" id="10_yw08i"]
+[ext_resource type="Script" path="res://Scripts/TitleScreen/LevelSelectButton.gd" id="14_242af"]
 [ext_resource type="Texture2D" uid="uid://c2b171lkxsg4n" path="res://Sprites/UI/MenuIcons/MenuBackground.png" id="17_tsjs3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4sn6i"]
@@ -143,7 +144,7 @@ texture = ExtResource("3_q1ktd")
 script = ExtResource("4_sjl07")
 textures = Array[Texture2D]([ExtResource("3_q1ktd"), ExtResource("5_gmmnb"), ExtResource("2_m37cp"), ExtResource("7_liimk"), ExtResource("8_m36jd"), ExtResource("10_w8141")])
 
-[node name="PlayButton" type="Button" parent="MainLayer"]
+[node name="PlayButton" type="Button" parent="MainLayer" node_paths=PackedStringArray("layer_select")]
 material = ExtResource("1_nr5e2")
 offset_left = -2.0
 offset_top = 369.0
@@ -155,6 +156,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_cbqxr")
 text = "PLAY"
 flat = true
 script = ExtResource("3_umvp3")
+layer_select = NodePath("../../LayerSelactLayer")
 
 [node name="ConfigButton" type="Button" parent="MainLayer"]
 material = ExtResource("1_nr5e2")
@@ -180,6 +182,56 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_j7r8f")
 text = "QUIT"
 flat = true
 script = ExtResource("5_dsivk")
+
+[node name="LayerSelactLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="L0" type="Button" parent="LayerSelactLayer"]
+material = ExtResource("1_nr5e2")
+offset_left = -2.0
+offset_top = 48.0
+offset_right = 1151.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pul3w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cbqxr")
+text = "LAYER 01"
+flat = true
+script = ExtResource("14_242af")
+
+[node name="L4" type="Button" parent="LayerSelactLayer"]
+material = ExtResource("1_nr5e2")
+offset_left = -2.0
+offset_top = 100.0
+offset_right = 1151.0
+offset_bottom = 148.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pul3w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cbqxr")
+text = "LAYER 05
+"
+flat = true
+script = ExtResource("14_242af")
+lvl = 4
+id = 1
+cheese = 2
+
+[node name="L24" type="Button" parent="LayerSelactLayer"]
+material = ExtResource("1_nr5e2")
+offset_left = -2.0
+offset_top = 150.0
+offset_right = 1151.0
+offset_bottom = 198.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pul3w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cbqxr")
+text = "LAYER 25
+"
+flat = true
+script = ExtResource("14_242af")
+lvl = 24
+id = 2
+cheese = 3
 
 [node name="ConfigLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -282,6 +334,18 @@ texture = ExtResource("17_tsjs3")
 [connection signal="mouse_entered" from="MainLayer/QuitButton" to="MainLayer/QuitButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainLayer/QuitButton" to="MainLayer/QuitButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="MainLayer/QuitButton" to="MainLayer/QuitButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="LayerSelactLayer/L0" to="LayerSelactLayer/L0" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="LayerSelactLayer/L0" to="LayerSelactLayer/L0" method="_on_mouse_exited"]
+[connection signal="pressed" from="LayerSelactLayer/L0" to="LayerSelactLayer/L0" method="_on_pressed"]
+[connection signal="visibility_changed" from="LayerSelactLayer/L0" to="LayerSelactLayer/L0" method="_on_visibility_changed"]
+[connection signal="mouse_entered" from="LayerSelactLayer/L4" to="LayerSelactLayer/L4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="LayerSelactLayer/L4" to="LayerSelactLayer/L4" method="_on_mouse_exited"]
+[connection signal="pressed" from="LayerSelactLayer/L4" to="LayerSelactLayer/L4" method="_on_pressed"]
+[connection signal="visibility_changed" from="LayerSelactLayer/L4" to="LayerSelactLayer/L4" method="_on_visibility_changed"]
+[connection signal="mouse_entered" from="LayerSelactLayer/L24" to="LayerSelactLayer/L24" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="LayerSelactLayer/L24" to="LayerSelactLayer/L24" method="_on_mouse_exited"]
+[connection signal="pressed" from="LayerSelactLayer/L24" to="LayerSelactLayer/L24" method="_on_pressed"]
+[connection signal="visibility_changed" from="LayerSelactLayer/L24" to="LayerSelactLayer/L24" method="_on_visibility_changed"]
 [connection signal="gui_input" from="ConfigLayer/Line1/TextEdit" to="ConfigLayer/Line1/TextEdit" method="_on_gui_input"]
 [connection signal="text_changed" from="ConfigLayer/Line1/TextEdit" to="ConfigLayer/Line1/TextEdit" method="_on_text_changed"]
 [connection signal="pressed" from="ConfigLayer/Line2/Button" to="ConfigLayer/Line2/Button" method="_on_pressed"]
