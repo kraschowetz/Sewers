@@ -3,10 +3,11 @@ res://Scripts/AI/Enemy_Wandering_AI.gd
 res://Scripts/TitleScreen/Title.gd
 res://Shaders/ItemShine.gdshader
 res://Shaders/Materials/ItemShineMaterial.tres
-res://TileSets/BlueTileSet.tres
-res://TileSets/GreenTileSet.tres
-res://TileSets/BrownTIleSet.tres
 res://Shaders/ChromaticAberration.gdshader
 res://Shaders/Water.gdshader
 res://Shaders/DownwardsWobble.gdshader
 res://Shaders/SimpleWobble.gdshader
+res://TileSets/BlueTileSet.tres
+res://TileSets/GreenTileSet.tres
+res://TileSets/BrownTIleSet.tres
+res://Scripts/World/World.gd

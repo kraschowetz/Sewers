@@ -288,10 +288,14 @@ func transition() -> void:
 	$Player.ammo_changed.emit()
 	$UI/LayerLabel.text = "Layer %s" %layer
 	
+	var og_text: PackedStringArray = FileAccess.open("res://LevelsReached.txt", FileAccess.READ).get_as_text().split("\n")
+	
 	for i in range(save_layers.size()):
 		if layer >= save_layers[i].y:
 			save_layers[i].x = 1
-		placeholder_text += "%s/%s\n" %[save_layers[i].x, save_layers[i].y]
+			placeholder_text += "%s/%s\n" %[save_layers[i].x, save_layers[i].y]
+		else:
+			placeholder_text += og_text[i] + "\n"
 		var file = FileAccess.open("res://LevelsReached.txt", FileAccess.WRITE)
 		
 		file.store_string(placeholder_text)
